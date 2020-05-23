@@ -26,7 +26,10 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["./components/*"]
+      "@hooks": ["hooks"],
+      "@types": ["types"],
+      "@components/*": ["components/*"],
+      "@contexts/*": ["contexts/*"]
     }
   },
   "exclude": [

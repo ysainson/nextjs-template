@@ -15,7 +15,7 @@ extends:
 rules:
   prettier/prettier: error
   react/react-in-jsx-scope: off
-  comma-dangle: ['error', 'never']
+  no-console: ['error', { allow: ['warn', 'error']}]
 
 plugins:
   - prettier

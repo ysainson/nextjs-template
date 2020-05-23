@@ -1,5 +1,13 @@
 import React from 'react';
 
+import { useTheme } from '@contexts/ThemeContext';
+
 export default (): JSX.Element => {
-  return <div>This is a Next.js project template.</div>;
+  const [theme, toggle] = useTheme();
+
+  return (
+    <button type="button" onClick={toggle}>
+      {theme}
+    </button>
+  );
 };
