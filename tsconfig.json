@@ -28,6 +28,7 @@
     "paths": {
       "@hooks": ["hooks"],
       "@types": ["types"],
+      "@utils": ["utils"],
       "@components/*": ["components/*"],
       "@contexts/*": ["contexts/*"]
     }
