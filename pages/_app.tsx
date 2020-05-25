@@ -8,7 +8,9 @@ import { useMounted } from '@hooks';
 
 import ThemeContext, { useTheme } from '@contexts/ThemeContext';
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+import { Page } from '@components/Layouts';
+
+const AppContent = ({ Component, pageProps }: AppProps): JSX.Element => {
   const [theme] = useTheme();
   const mounted = useMounted();
 
@@ -18,8 +20,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Component {...pageProps} />
+      <Page>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...pageProps} />
+      </Page>
     </ThemeProvider>
   );
 };
@@ -28,7 +32,7 @@ export default (props: AppProps): JSX.Element => {
   return (
     <ThemeContext>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <App {...props} />
+      <AppContent {...props} />
     </ThemeContext>
   );
 };
