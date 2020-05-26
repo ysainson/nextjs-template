@@ -1,10 +1,12 @@
-import theme from 'styled-theming';
+const colors = {
+  white: '#ffffff',
+  black: '#000000',
+  lightGrey: '#c3c3c3',
+  grey: '#5f5f5f',
+};
 
 export default {
-  color: {
-    background: theme('mode', { light: '#ffffff', dark: '#000000' }),
-    text: theme('mode', { light: '#000000', dark: '#ffffff' }),
-  },
+  colors,
   typography: {
     h1: { size: '3em', weight: 'bold' },
     h2: { size: '2.25em', weight: 600 },

@@ -8,11 +8,10 @@ interface PageProps {
 }
 
 const StyledPage = styled.div<PageProps>`
-  padding: 0 24px;
+  padding: 0 calc(${theme.layout.gap} * 16);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: ${theme.color.background};
 `;
 
 export default ({ children }: PageProps): JSX.Element => {

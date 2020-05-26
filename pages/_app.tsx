@@ -1,17 +1,29 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import { ThemeProvider } from 'styled-components';
-
-import '../global.styles.css';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import { useMounted } from '@hooks';
+import { theme } from '@utils';
 
 import ThemeContext, { useTheme } from '@contexts/ThemeContext';
 
 import { Page } from '@components/Layouts';
 
+const GlobalStyle = createGlobalStyle`
+  * {
+    font-family: Montserrat, "Roboto Light", sans-serif;
+  }
+
+  html, body {
+    background: ${({ theme: scheme }): string =>
+      scheme === 'dark' ? theme.colors.black : theme.colors.white};
+    margin: 0;
+    padding: 0;
+  }
+`;
+
 const AppContent = ({ Component, pageProps }: AppProps): JSX.Element => {
-  const [theme] = useTheme();
+  const [scheme] = useTheme();
   const mounted = useMounted();
 
   if (!mounted) {
@@ -19,7 +31,8 @@ const AppContent = ({ Component, pageProps }: AppProps): JSX.Element => {
   }
 
   return (
-    <ThemeProvider theme={{ mode: theme }}>
+    <ThemeProvider theme={{ mode: scheme }}>
+      <GlobalStyle theme={scheme} />
       <Page>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />

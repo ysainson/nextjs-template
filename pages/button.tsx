@@ -8,25 +8,25 @@ import { useTheme } from '@contexts/ThemeContext';
 export default (): JSX.Element => {
   return (
     <Container>
-      <Text variant="h3">Contained</Text>
+      <Text variant="h1">Button</Text>
+      <Text variant="h3">Variant</Text>
       <Container row justify="flex-start">
-        <Button size="short" onClick={useTheme()[1]}>
-          Short
+        <Button>Primary</Button>
+        <Button variant="secondary" onClick={useTheme()[1]}>
+          Secondary
         </Button>
-        <Button size="medium">Medium</Button>
-        <Button size="large">Short</Button>
       </Container>
-      <Text variant="h3">Outlined</Text>
+      <Text variant="h3">Size</Text>
       <Container row justify="flex-start">
-        <Button variant="outlined" size="short">
-          Short
-        </Button>
-        <Button variant="outlined" size="medium">
-          Medium
-        </Button>
-        <Button variant="outlined" size="large">
-          Large
-        </Button>
+        <Button size="short">Short</Button>
+        <Button>Medium</Button>
+        <Button size="long">Long</Button>
+      </Container>
+      <Text variant="h3">Thickness</Text>
+      <Container row justify="flex-start">
+        <Button thickness="small">Small</Button>
+        <Button>Medium</Button>
+        <Button thickness="large">Large</Button>
       </Container>
     </Container>
   );
