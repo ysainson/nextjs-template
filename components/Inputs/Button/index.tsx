@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { variants } from 'styled-theming';
 
 import { theme } from '@utils';
+
 import { Text } from '@components/DataDisplay';
+import { Container } from '@components/Layouts';
 
 interface ButtonProps {
   children: ReactNode;
@@ -17,15 +19,15 @@ interface ButtonProps {
 const color = {
   base: {
     text: variants('mode', 'variant', {
-      primary: { light: theme.colors.white, dark: theme.colors.black },
+      primary: { light: theme.colors.light, dark: theme.colors.dark },
       secondary: { light: theme.colors.grey, dark: theme.colors.lightGrey },
     }),
     background: variants('mode', 'variant', {
-      primary: { light: theme.colors.black, dark: theme.colors.white },
-      secondary: { light: theme.colors.white, dark: theme.colors.black },
+      primary: { light: theme.colors.dark, dark: theme.colors.light },
+      secondary: { light: theme.colors.light, dark: theme.colors.dark },
     }),
     border: variants('mode', 'variant', {
-      primary: { light: theme.colors.black, dark: theme.colors.white },
+      primary: { light: theme.colors.dark, dark: theme.colors.light },
       secondary: {
         light: theme.colors.lightGrey,
         dark: theme.colors.grey,
@@ -34,26 +36,26 @@ const color = {
   },
   hover: {
     text: variants('mode', 'variant', {
-      primary: { light: theme.colors.black, dark: theme.colors.white },
-      secondary: { light: theme.colors.black, dark: theme.colors.white },
+      primary: { light: theme.colors.dark, dark: theme.colors.light },
+      secondary: { light: theme.colors.dark, dark: theme.colors.light },
     }),
     background: variants('mode', 'variant', {
-      primary: { light: theme.colors.white, dark: theme.colors.black },
-      secondary: { light: theme.colors.white, dark: theme.colors.black },
+      primary: { light: theme.colors.light, dark: theme.colors.dark },
+      secondary: { light: theme.colors.light, dark: theme.colors.dark },
     }),
     border: variants('mode', 'variant', {
-      primary: { light: theme.colors.black, dark: theme.colors.white },
-      secondary: { light: theme.colors.black, dark: theme.colors.white },
+      primary: { light: theme.colors.dark, dark: theme.colors.light },
+      secondary: { light: theme.colors.dark, dark: theme.colors.light },
     }),
   },
 };
 
-const StyledButton = styled.button<Required<ButtonProps>>`
+const StyledButton = styled.button<Omit<Required<ButtonProps>, 'gap'>>`
   // Style
   outline: none;
   cursor: pointer;
   background: ${color.base.background};
-  border-radius: 5px;
+  border-radius: ${theme.layout.radius};
   border: 1px solid ${color.base.border};
 
   // Text
@@ -87,7 +89,6 @@ const StyledButton = styled.button<Required<ButtonProps>>`
         return `calc(${theme.layout.gap} * 2)`;
     }
   }};
-  margin: calc(${theme.layout.gap} * ${({ gap }): number => gap});
 
   // Animation
   transition: all 0.2s ease 0s;
@@ -100,9 +101,6 @@ const StyledButton = styled.button<Required<ButtonProps>>`
     border: 1px solid ${color.hover.border};
     background: ${color.hover.background};
   }
-  :active {
-    min-width: 148px;
-  }
 `;
 
 export default ({
@@ -114,16 +112,17 @@ export default ({
   onClick = (): void => {},
 }: ButtonProps): JSX.Element => {
   return (
-    <StyledButton
-      variant={variant}
-      size={size}
-      thickness={thickness}
-      gap={gap}
-      onClick={onClick}
-    >
-      <Text variant="small" weight={500}>
-        {children}
-      </Text>
-    </StyledButton>
+    <Container gap={gap}>
+      <StyledButton
+        variant={variant}
+        size={size}
+        thickness={thickness}
+        onClick={onClick}
+      >
+        <Text variant="small" weight={500}>
+          {children}
+        </Text>
+      </StyledButton>
+    </Container>
   );
 };

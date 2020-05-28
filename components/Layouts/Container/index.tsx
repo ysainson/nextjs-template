@@ -18,26 +18,26 @@ interface ContainerProps {
   noWrap?: boolean;
   justify?: flexContent;
   align?: flexContent;
-  gap?: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 }
 
-const StyledContainer = styled.div<ContainerProps>`
+const StyledContainer = styled.div<Required<ContainerProps>>`
+  // Layout
   display: flex;
   flex-direction: ${({ row }): string => (row ? 'row' : 'column')};
   flex-wrap: ${({ noWrap }): string => (noWrap ? 'nowrap' : 'wrap')};
-  justify-content: ${({ justify }): string => justify ?? 'center'};
-  align-items: ${({ row, align }): string =>
-    align ?? (row ? 'center' : 'stretch')};
-  padding: calc(${theme.layout.gap} * ${({ gap }): number => gap ?? 3});
+  justify-content: ${({ justify }): string => justify};
+  align-items: ${({ align }): string => align};
+  margin: calc(${theme.layout.gap} * ${({ gap }): number => gap});
 `;
 
 export default ({
   children,
-  row,
-  noWrap,
-  justify,
-  align,
-  gap,
+  row = false,
+  noWrap = false,
+  justify = 'center',
+  align = row ? 'center' : 'stretch',
+  gap = 3,
 }: ContainerProps): JSX.Element => {
   return (
     <StyledContainer

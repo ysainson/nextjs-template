@@ -18,15 +18,23 @@ export default (): JSX.Element => {
       </Container>
       <Text variant="h3">Size</Text>
       <Container row justify="flex-start">
-        <Button size="short">Short</Button>
-        <Button>Medium</Button>
-        <Button size="long">Long</Button>
+        <Button variant="secondary" size="short">
+          Short
+        </Button>
+        <Button variant="secondary">Medium</Button>
+        <Button variant="secondary" size="long">
+          Long
+        </Button>
       </Container>
       <Text variant="h3">Thickness</Text>
       <Container row justify="flex-start">
-        <Button thickness="small">Small</Button>
-        <Button>Medium</Button>
-        <Button thickness="large">Large</Button>
+        <Button variant="secondary" thickness="small">
+          Small
+        </Button>
+        <Button variant="secondary">Medium</Button>
+        <Button variant="secondary" thickness="large">
+          Large
+        </Button>
       </Container>
     </Container>
   );

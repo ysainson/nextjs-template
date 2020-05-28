@@ -6,12 +6,12 @@ import { theme } from '@utils';
 
 const color = styledTheme.variants('mode', 'fill', {
   light: {
-    light: theme.colors.black,
-    dark: theme.colors.white,
+    light: theme.colors.dark,
+    dark: theme.colors.light,
   },
   dark: {
-    light: theme.colors.white,
-    dark: theme.colors.black,
+    light: theme.colors.light,
+    dark: theme.colors.dark,
   },
 });
 

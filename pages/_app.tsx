@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     background: ${({ theme: scheme }): string =>
-      scheme === 'dark' ? theme.colors.black : theme.colors.white};
+      scheme === 'dark' ? theme.colors.dark : theme.colors.light};
     margin: 0;
     padding: 0;
   }

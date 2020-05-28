@@ -1,8 +1,10 @@
 const colors = {
+  light: '#f6f8fa',
+  dark: '#24292e',
   white: '#ffffff',
   black: '#000000',
-  lightGrey: '#c3c3c3',
-  grey: '#5f5f5f',
+  lightGrey: '#d1d5da',
+  grey: '#424242',
 };
 
 export default {
@@ -19,5 +21,6 @@ export default {
   },
   layout: {
     gap: '4px',
+    radius: '5px',
   },
 };
