@@ -9,6 +9,7 @@ export default (): JSX.Element => {
   return (
     <Container>
       <Text variant="h1">Button</Text>
+      <Text variant="h5">Used to trigger an operation.</Text>
       <Text variant="h3">Variant</Text>
       <Container row justify="flex-start">
         <Button>Primary</Button>

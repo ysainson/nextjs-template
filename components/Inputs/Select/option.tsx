@@ -5,8 +5,7 @@ import { theme } from '@utils';
 
 const color = {
   border: styledTheme('mode', {
-    light: 'none',
-    dark: `none`,
+    dark: `1px solid ${theme.colors['--grey'].light}`,
   }),
   shadow: styledTheme('mode', {
     light: '0 8px 30px rgba(0, 0, 0, 0.12)',
@@ -16,10 +15,7 @@ const color = {
     light: '#ececec',
     dark: 'rgba(76,76,76,0.25)',
   }),
-  text: styledTheme('mode', {
-    light: theme.colors.grey,
-    dark: theme.colors.lightGrey,
-  }),
+  text: styledTheme('mode', theme.colors['--grey']),
 };
 
 export const StyledSelectOptionContainer = styled.div`
@@ -40,7 +36,6 @@ interface Props {
 export const StyledSelectOption = styled.div<Props>`
   // Style
   cursor: pointer;
-  text-decoration: none;
   border-radius: ${({ isFirst, isLast }): string =>
     (isFirst && `${theme.layout.radius} ${theme.layout.radius} 0 0`) ||
     (isLast && `0 0 ${theme.layout.radius} ${theme.layout.radius}`) ||

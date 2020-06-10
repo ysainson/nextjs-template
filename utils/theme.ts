@@ -1,10 +1,10 @@
 const colors = {
-  light: '#f6f8fa',
-  dark: '#24292e',
-  white: '#ffffff',
-  black: '#000000',
-  lightGrey: '#d1d5da',
-  grey: '#424242',
+  '--default': { light: '#fff', dark: '#000' },
+  '--default-inverted': { light: '#000', dark: '#fff' },
+  '--grey': { light: '#424242', dark: '#d1d5da' },
+  '--grey-inverted': { light: '#d1d5da', dark: '#424242' },
+  '--error-light': { light: 'rgba(255,0,0,0.68)', dark: 'rgba(255,0,0,0.68)' },
+  '--error': { light: 'rgba(255,0,0,1)', dark: 'rgba(255,0,0,1)' },
 };
 
 export default {

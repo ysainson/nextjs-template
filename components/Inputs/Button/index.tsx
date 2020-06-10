@@ -8,49 +8,43 @@ import { Text } from '@components/DataDisplay';
 import { Container } from '@components/Layouts';
 
 interface ButtonProps {
-  children: ReactNode;
-  variant?: 'primary' | 'secondary';
-  size?: 'short' | 'medium' | 'long';
-  thickness?: 'small' | 'medium' | 'large';
-  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-  onClick?: () => void;
+  variant: 'primary' | 'secondary';
+  size: 'short' | 'medium' | 'long';
+  thickness: 'small' | 'medium' | 'large';
 }
 
 const color = {
   base: {
     text: variants('mode', 'variant', {
-      primary: { light: theme.colors.light, dark: theme.colors.dark },
-      secondary: { light: theme.colors.grey, dark: theme.colors.lightGrey },
+      primary: theme.colors['--default'],
+      secondary: theme.colors['--grey'],
     }),
     background: variants('mode', 'variant', {
-      primary: { light: theme.colors.dark, dark: theme.colors.light },
-      secondary: { light: theme.colors.light, dark: theme.colors.dark },
+      primary: theme.colors['--default-inverted'],
+      secondary: theme.colors['--default'],
     }),
     border: variants('mode', 'variant', {
-      primary: { light: theme.colors.dark, dark: theme.colors.light },
-      secondary: {
-        light: theme.colors.lightGrey,
-        dark: theme.colors.grey,
-      },
+      primary: theme.colors['--default'],
+      secondary: theme.colors['--grey-inverted'],
     }),
   },
   hover: {
     text: variants('mode', 'variant', {
-      primary: { light: theme.colors.dark, dark: theme.colors.light },
-      secondary: { light: theme.colors.dark, dark: theme.colors.light },
+      primary: theme.colors['--default-inverted'],
+      secondary: theme.colors['--default-inverted'],
     }),
     background: variants('mode', 'variant', {
-      primary: { light: theme.colors.light, dark: theme.colors.dark },
-      secondary: { light: theme.colors.light, dark: theme.colors.dark },
+      primary: theme.colors['--default'],
+      secondary: theme.colors['--default'],
     }),
     border: variants('mode', 'variant', {
-      primary: { light: theme.colors.dark, dark: theme.colors.light },
-      secondary: { light: theme.colors.dark, dark: theme.colors.light },
+      primary: theme.colors['--default-inverted'],
+      secondary: theme.colors['--default-inverted'],
     }),
   },
 };
 
-const StyledButton = styled.button<Omit<Required<ButtonProps>, 'gap'>>`
+const StyledButton = styled.button<ButtonProps>`
   // Style
   outline: none;
   cursor: pointer;
@@ -103,6 +97,11 @@ const StyledButton = styled.button<Omit<Required<ButtonProps>, 'gap'>>`
   }
 `;
 
+interface Props extends Partial<ButtonProps> {
+  children: ReactNode;
+  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  onClick?: () => void;
+}
 export default ({
   children,
   variant = 'primary',
@@ -110,7 +109,7 @@ export default ({
   thickness = 'medium',
   gap = 3,
   onClick = (): void => {},
-}: ButtonProps): JSX.Element => {
+}: Props): JSX.Element => {
   return (
     <Container gap={gap}>
       <StyledButton

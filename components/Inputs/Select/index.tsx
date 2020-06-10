@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { ChevronDown } from 'react-feather';
 import styled from 'styled-components';
-import { variants } from 'styled-theming';
+import { variants, VariantSet } from 'styled-theming';
 
 import { theme, uuid } from '@utils';
 import { useClickOutside } from '@hooks';
@@ -14,24 +14,25 @@ import { StyledSelectOption, StyledSelectOptionContainer } from './option';
 const color = {
   base: {
     primary: variants('mode', 'variant', {
-      default: { light: theme.colors.grey, dark: theme.colors.lightGrey },
-      error: { light: 'rgba(255,0,0,0.68)', dark: 'rgba(255,0,0,0.68)' },
-      disabled: { light: theme.colors.lightGrey, dark: theme.colors.grey },
+      default: theme.colors['--grey'],
+      error: theme.colors['--error'],
+      disabled: theme.colors['--grey-inverted'],
     }),
     secondary: variants('mode', 'variant', {
-      default: { light: theme.colors.lightGrey, dark: theme.colors.grey },
-      error: { light: 'rgba(255,0,0,0.68)', dark: 'rgba(255,0,0,0.68)' },
-      disabled: { light: theme.colors.lightGrey, dark: theme.colors.grey },
+      default: theme.colors['--grey-inverted'],
+      error: theme.colors['--error-light'],
+      disabled: theme.colors['--grey-inverted'],
     }),
   },
   hover: variants('mode', 'variant', {
-    default: { light: theme.colors.black, dark: theme.colors.white },
-    error: { light: 'rgba(255,0,0,1)', dark: 'rgba(255,0,0,1)' },
-    disabled: { light: theme.colors.lightGrey, dark: theme.colors.grey },
+    default: theme.colors['--default-inverted'],
+    error: theme.colors['--error'],
+    disabled: theme.colors['--grey-inverted'],
   }),
 };
 
 interface SelectProps {
+  open: boolean;
   variant: 'default' | 'error' | 'disabled';
   size: 'short' | 'medium' | 'long';
   thickness: 'small' | 'medium' | 'large';
@@ -41,7 +42,8 @@ const StyledSelect = styled.div<SelectProps>`
   // Style
   cursor: ${({ variant }): string =>
     variant === 'disabled' ? 'not-allowed' : 'pointer'};
-  border: 1px solid ${color.base.secondary};
+  border: 1px solid
+    ${({ open }): VariantSet => (open ? color.hover : color.base.secondary)};
   border-radius: ${theme.layout.radius};
 
   // Image
@@ -99,7 +101,7 @@ const StyledSelect = styled.div<SelectProps>`
 
 type Option<T> = { value: T; label: string };
 
-interface Props<T> extends Partial<Omit<SelectProps, 'variant'>> {
+interface Props<T> extends Partial<Omit<SelectProps, 'variant' | 'open'>> {
   options: Option<T>[];
   onSelect: (value: T) => void;
   selected?: Option<T>;
@@ -142,10 +144,11 @@ export default <T,>({
   return (
     <Container gap={gap}>
       <StyledSelect
+        open={open}
         size={size}
         thickness={thickness}
         variant={variant()}
-        onClick={(): void => setOpen(!open)}
+        onClick={(): void => setOpen(true)}
       >
         <Container row justify="space-between" gap={0}>
           <Text variant="small" weight={500}>

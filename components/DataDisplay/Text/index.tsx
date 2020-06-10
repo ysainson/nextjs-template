@@ -5,35 +5,33 @@ import styledTheme from 'styled-theming';
 import { theme } from '@utils';
 
 const color = styledTheme.variants('mode', 'fill', {
-  light: {
-    light: theme.colors.dark,
-    dark: theme.colors.light,
-  },
-  dark: {
-    light: theme.colors.light,
-    dark: theme.colors.dark,
-  },
+  light: theme.colors['--default-inverted'],
+  dark: theme.colors['--default'],
 });
 
 type FontWeight = 900 | 800 | 'bold' | 600 | 500 | 'normal' | 300 | 200 | 100;
 
 interface TextProps {
-  children: ReactNode;
-  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'small';
-  fill?: 'light' | 'dark';
-  weight?: FontWeight;
-  italic?: boolean;
-  bold?: boolean;
+  size: string;
+  fill: 'light' | 'dark';
+  weight: FontWeight;
+  italic: boolean;
+  bold: boolean;
 }
 
 const StyledText = styled.text<Required<TextProps>>`
   color: ${color};
-  font-size: ${({ variant }): string => theme.typography[variant].size};
+  font-size: ${({ size }): string => size};
   font-weight: ${({ weight }): FontWeight => weight};
   font-style: ${({ italic }): string => (italic ? 'italic' : 'normal')};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 `;
+
+interface Props extends Partial<Omit<TextProps, 'size'>> {
+  children: ReactNode;
+  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'small';
+}
 
 export default ({
   children,
@@ -42,10 +40,10 @@ export default ({
   weight = theme.typography[variant].weight as FontWeight,
   italic = false,
   bold = false,
-}: TextProps): JSX.Element => {
+}: Props): JSX.Element => {
   return (
     <StyledText
-      variant={variant}
+      size={theme.typography[variant].size}
       fill={fill}
       weight={weight}
       italic={italic}
