@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { ChevronDown } from 'react-feather';
+import { ChevronDown, ChevronUp } from 'react-feather';
 import styled from 'styled-components';
 import { variants, VariantSet } from 'styled-theming';
 
@@ -145,34 +145,36 @@ export default <T,>({
 
   return (
     <Container gap={gap}>
-      <StyledSelect
-        open={open}
-        size={size}
-        thickness={thickness}
-        variant={variant()}
-        onClick={(): void => setOpen(true)}
-      >
-        <Container row justify="space-between" gap={0}>
-          <Text variant="small" weight={500}>
-            {selectedOption?.label ?? text}
-          </Text>
-          <ChevronDown size={19} />
-        </Container>
-      </StyledSelect>
-      {open && (
-        <StyledSelectOptionContainer ref={ref}>
-          {options.map((e, i) => (
-            <StyledSelectOption
-              key={uuid()}
-              isFirst={i === 0}
-              isLast={i === options.length - 1}
-              onClick={(): void => handleSelect(e)}
-            >
-              {e.label}
-            </StyledSelectOption>
-          ))}
-        </StyledSelectOptionContainer>
-      )}
+      <div ref={ref}>
+        <StyledSelect
+          open={open}
+          size={size}
+          thickness={thickness}
+          variant={variant()}
+          onClick={(): void => setOpen(!open)}
+        >
+          <Container row justify="space-between" gap={0}>
+            <Text variant="small" weight={500}>
+              {selectedOption?.label ?? text}
+            </Text>
+            {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          </Container>
+        </StyledSelect>
+        {open && (
+          <StyledSelectOptionContainer>
+            {options.map((e, i) => (
+              <StyledSelectOption
+                key={uuid()}
+                isFirst={i === 0}
+                isLast={i === options.length - 1}
+                onClick={(): void => handleSelect(e)}
+              >
+                {e.label}
+              </StyledSelectOption>
+            ))}
+          </StyledSelectOptionContainer>
+        )}
+      </div>
     </Container>
   );
 };
