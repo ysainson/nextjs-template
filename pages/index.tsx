@@ -5,12 +5,12 @@ import { Button, Select } from '@components/Inputs';
 import { useTheme } from '@contexts/ThemeContext';
 
 export default (): JSX.Element => {
-  const [, setSelected] = useState('');
+  const [, setSelected] = useState();
 
   const options = [
-    { value: '', label: 'One' },
-    { value: 'This is two', label: 'Two' },
-    { value: 'This is three', label: 'Three' },
+    { value: 1, label: 'One' },
+    { value: 2, label: 'Two' },
+    { value: 3, label: 'Three' },
   ];
 
   return (

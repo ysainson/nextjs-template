@@ -48,13 +48,15 @@ const StyledSelect = styled.div<SelectProps>`
 
   // Image
   svg {
-    color: ${color.base.primary};
+    color: ${({ open }): VariantSet =>
+      open ? color.hover : color.base.primary};
   }
 
   // Text
   white-space: nowrap;
   small {
-    color: ${color.base.primary};
+    color: ${({ open }): VariantSet =>
+      open ? color.hover : color.base.primary};
   }
 
   // Layout
