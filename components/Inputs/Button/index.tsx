@@ -8,7 +8,7 @@ import { Text } from '@components/DataDisplay';
 import { Container } from '@components/Layouts';
 
 interface ButtonProps {
-  variant: 'primary' | 'secondary';
+  variant: 'primary' | 'secondary' | 'disabled';
   size: 'short' | 'medium' | 'long';
   thickness: 'small' | 'medium' | 'large';
 }
@@ -18,36 +18,42 @@ const color = {
     text: variants('mode', 'variant', {
       primary: theme.colors['--default'],
       secondary: theme.colors['--grey'],
+      disabled: theme.colors['--grey-inverted'],
     }),
     background: variants('mode', 'variant', {
       primary: theme.colors['--default-inverted'],
       secondary: theme.colors['--default'],
+      disabled: theme.colors['--default'],
     }),
     border: variants('mode', 'variant', {
       primary: theme.colors['--default'],
       secondary: theme.colors['--grey-inverted'],
+      disabled: theme.colors['--grey-inverted'],
     }),
   },
   hover: {
     text: variants('mode', 'variant', {
       primary: theme.colors['--default-inverted'],
       secondary: theme.colors['--default-inverted'],
+      disabled: theme.colors['--grey-inverted'],
     }),
     background: variants('mode', 'variant', {
       primary: theme.colors['--default'],
       secondary: theme.colors['--default'],
+      disabled: theme.colors['--default'],
     }),
     border: variants('mode', 'variant', {
       primary: theme.colors['--default-inverted'],
       secondary: theme.colors['--default-inverted'],
+      disabled: theme.colors['--grey-inverted'],
     }),
   },
 };
 
 const StyledButton = styled.button<ButtonProps>`
   // Style
-  outline: none;
-  cursor: pointer;
+  cursor: ${({ variant }): string =>
+    variant === 'disabled' ? 'not-allowed' : 'pointer'};
   background: ${color.base.background};
   border-radius: ${theme.layout.radius};
   border: 1px solid ${color.base.border};
@@ -99,6 +105,7 @@ const StyledButton = styled.button<ButtonProps>`
 
 interface Props extends Partial<ButtonProps> {
   children: ReactNode;
+  disabled?: boolean;
   gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   onClick?: () => void;
 }
@@ -107,13 +114,14 @@ export default ({
   variant = 'primary',
   size = 'medium',
   thickness = 'medium',
+  disabled = false,
   gap = 3,
   onClick = (): void => {},
 }: Props): JSX.Element => {
   return (
     <Container gap={gap}>
       <StyledButton
-        variant={variant}
+        variant={disabled ? 'disabled' : variant}
         size={size}
         thickness={thickness}
         onClick={onClick}

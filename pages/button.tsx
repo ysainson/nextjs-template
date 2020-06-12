@@ -16,6 +16,9 @@ export default (): JSX.Element => {
         <Button variant="secondary" onClick={useTheme()[1]}>
           Secondary
         </Button>
+        <Button disabled variant="primary">
+          Disabled
+        </Button>
       </Container>
       <Text variant="h3">Size</Text>
       <Container row justify="flex-start">
