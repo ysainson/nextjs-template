@@ -8,8 +8,6 @@ import { theme } from '@utils';
 
 import ThemeContext, { useTheme } from '@contexts/ThemeContext';
 
-import { Page } from '@components/Layouts';
-
 const backgroundColor = styledTheme('mode', theme.colors['--default']);
 
 const GlobalStyle = createGlobalStyle`
@@ -36,10 +34,8 @@ const AppContent = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <ThemeProvider theme={{ mode: scheme }}>
       <GlobalStyle />
-      <Page>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
-      </Page>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 };

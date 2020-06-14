@@ -31,14 +31,14 @@ const color = {
   }),
 };
 
-interface SelectProps {
+interface StyledSelectProps {
   open: boolean;
   variant: 'default' | 'error' | 'disabled';
   size: 'short' | 'medium' | 'long';
   thickness: 'small' | 'medium' | 'large';
 }
 
-const StyledSelect = styled.div<SelectProps>`
+const StyledSelect = styled.div<StyledSelectProps>`
   // Style
   cursor: ${({ variant }): string =>
     variant === 'disabled' ? 'not-allowed' : 'pointer'};
@@ -103,7 +103,8 @@ const StyledSelect = styled.div<SelectProps>`
 
 type Option<T> = { value: T; label: string };
 
-interface Props<T> extends Partial<Omit<SelectProps, 'variant' | 'open'>> {
+interface SelectProps<T>
+  extends Partial<Omit<StyledSelectProps, 'variant' | 'open'>> {
   options: Option<T>[];
   onSelect: (value: T) => void;
   selected?: Option<T>;
@@ -123,7 +124,7 @@ export default <T,>({
   disabled = false,
   error = false,
   gap = 3,
-}: Props<T>): JSX.Element => {
+}: SelectProps<T>): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(selected);
   const ref = useClickOutside<HTMLDivElement>(() => setOpen(false));

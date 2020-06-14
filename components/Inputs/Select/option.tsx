@@ -28,12 +28,12 @@ export const StyledSelectOptionContainer = styled.div`
   margin-top: calc(${theme.layout.gap} * 2);
 `;
 
-interface Props {
+interface StyledSelectOptionProps {
   isFirst?: boolean;
   isLast?: boolean;
 }
 
-export const StyledSelectOption = styled.div<Props>`
+export const StyledSelectOption = styled.div<StyledSelectOptionProps>`
   // Style
   cursor: pointer;
   border-radius: ${({ isFirst, isLast }): string =>

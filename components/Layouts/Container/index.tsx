@@ -12,16 +12,15 @@ type flexContent =
   | 'stretch'
   | 'center';
 
-interface ContainerProps {
-  children: ReactNode;
-  row?: boolean;
-  noWrap?: boolean;
-  justify?: flexContent;
-  align?: flexContent;
-  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+interface StyledContainerProps {
+  row: boolean;
+  noWrap: boolean;
+  justify: flexContent;
+  align: flexContent;
+  gap: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 }
 
-const StyledContainer = styled.div<Required<ContainerProps>>`
+const StyledContainer = styled.div<StyledContainerProps>`
   // Layout
   display: flex;
   flex-direction: ${({ row }): string => (row ? 'row' : 'column')};
@@ -30,6 +29,10 @@ const StyledContainer = styled.div<Required<ContainerProps>>`
   align-items: ${({ align }): string => align};
   margin: calc(${theme.layout.gap} * ${({ gap }): number => gap});
 `;
+
+interface ContainerProps extends Partial<StyledContainerProps> {
+  children: ReactNode;
+}
 
 export default ({
   children,

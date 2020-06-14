@@ -11,7 +11,7 @@ const color = styledTheme.variants('mode', 'fill', {
 
 type FontWeight = 900 | 800 | 'bold' | 600 | 500 | 'normal' | 300 | 200 | 100;
 
-interface TextProps {
+interface StyledTextProps {
   size: string;
   fill: 'light' | 'dark';
   weight: FontWeight;
@@ -19,7 +19,7 @@ interface TextProps {
   bold: boolean;
 }
 
-const StyledText = styled.text<Required<TextProps>>`
+const StyledText = styled.text<StyledTextProps>`
   color: ${color};
   font-size: ${({ size }): string => size};
   font-weight: ${({ weight }): FontWeight => weight};
@@ -28,7 +28,7 @@ const StyledText = styled.text<Required<TextProps>>`
   -moz-osx-font-smoothing: grayscale;
 `;
 
-interface Props extends Partial<Omit<TextProps, 'size'>> {
+interface TextProps extends Partial<Omit<StyledTextProps, 'size'>> {
   children: ReactNode;
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'small';
 }
@@ -40,7 +40,7 @@ export default ({
   weight = theme.typography[variant].weight as FontWeight,
   italic = false,
   bold = false,
-}: Props): JSX.Element => {
+}: TextProps): JSX.Element => {
   return (
     <StyledText
       size={theme.typography[variant].size}

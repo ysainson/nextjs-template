@@ -7,7 +7,7 @@ import { theme } from '@utils';
 import { Text } from '@components/DataDisplay';
 import { Container } from '@components/Layouts';
 
-interface ButtonProps {
+interface StyledButtonProps {
   variant: 'primary' | 'secondary' | 'disabled';
   size: 'short' | 'medium' | 'long';
   thickness: 'small' | 'medium' | 'large';
@@ -50,7 +50,7 @@ const color = {
   },
 };
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<StyledButtonProps>`
   // Style
   cursor: ${({ variant }): string =>
     variant === 'disabled' ? 'not-allowed' : 'pointer'};
@@ -103,7 +103,7 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `;
 
-interface Props extends Partial<ButtonProps> {
+interface ButtonProps extends Partial<StyledButtonProps> {
   children: ReactNode;
   disabled?: boolean;
   gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
@@ -118,7 +118,7 @@ export default ({
   disabled = false,
   gap = 3,
   onClick = (): void => {},
-}: Props): JSX.Element => {
+}: ButtonProps): JSX.Element => {
   return (
     <Container gap={gap}>
       <StyledButton

@@ -1,4 +1,4 @@
-import Page from './Page';
 import Container from './Container';
 
-export { Page, Container };
+// eslint-disable-next-line import/prefer-default-export
+export { Container };
