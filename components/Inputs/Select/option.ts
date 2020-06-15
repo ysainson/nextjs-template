@@ -16,16 +16,21 @@ const color = {
     dark: 'rgba(76,76,76,0.25)',
   }),
   text: styledTheme('mode', theme.colors['--grey']),
+  background: styledTheme('mode', theme.colors['--default']),
 };
 
 export const StyledSelectOptionContainer = styled.div`
   // Style
+  background: ${color.background};
   border-radius: ${theme.layout.radius};
   border: ${color.border};
   box-shadow: ${color.shadow};
 
   // Layout
+  position: absolute;
+  width: 100%;
   margin-top: calc(${theme.layout.gap} * 2);
+  z-index: 2;
 `;
 
 interface StyledSelectOptionProps {

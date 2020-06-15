@@ -1,4 +1,4 @@
 import Container from './Container';
+import Spacer from './Spacer';
 
-// eslint-disable-next-line import/prefer-default-export
-export { Container };
+export { Container, Spacer };

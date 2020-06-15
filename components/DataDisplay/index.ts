@@ -1,4 +1,5 @@
 import Text from './Text';
+import Link from './Link';
+import InlineCode from './InlineCode';
 
-// eslint-disable-next-line import/prefer-default-export
-export { Text };
+export { Text, Link, InlineCode };

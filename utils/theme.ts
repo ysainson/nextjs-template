@@ -5,6 +5,7 @@ const colors = {
   '--grey-inverted': { light: '#d1d5da', dark: '#424242' },
   '--error-light': { light: 'rgba(255,0,0,0.68)', dark: 'rgba(255,0,0,0.68)' },
   '--error': { light: 'rgba(255,0,0,1)', dark: 'rgba(255,0,0,1)' },
+  '--toggle-bg': { light: '#eaeaea', dark: '#333333' },
 };
 
 export default {
