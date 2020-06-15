@@ -28,7 +28,7 @@ export default ({
         variant={disabled ? 'disabled' : variant}
         size={size}
         thickness={thickness}
-        onClick={onClick}
+        onClick={(!disabled && onClick) || ((): void => {})}
       >
         <Text variant="small" weight={500} align="center">
           {children}

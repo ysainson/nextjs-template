@@ -55,6 +55,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   background: ${color.base.background};
   border-radius: ${theme.layout.radius};
   border: 1px solid ${color.base.border};
+  outline: none;
 
   // Text
   text-align: center;

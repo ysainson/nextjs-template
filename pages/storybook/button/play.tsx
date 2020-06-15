@@ -39,7 +39,7 @@ export default (): JSX.Element => {
       </Head>
       <Container align="center">
         <Container>
-          <Container>
+          <Container gap={0}>
             <Text variant="h1">Playground</Text>
             <Text variant="h5">
               Play with
@@ -47,9 +47,9 @@ export default (): JSX.Element => {
               component.
             </Text>
           </Container>
-          <Spacer size="large" />
-          <Container row gap={0} align="flex-start">
-            <Container align="center" gap={0}>
+          <Container gap={0} align="stretch">
+            <Text variant="h3">Props</Text>
+            <Container row justify="space-between" gap={0}>
               <Text variant="small" bold>
                 Variant
               </Text>
@@ -59,7 +59,7 @@ export default (): JSX.Element => {
                 onSelect={setVariant}
               />
             </Container>
-            <Container align="center" gap={0}>
+            <Container row justify="space-between" gap={0}>
               <Text variant="small" bold>
                 Size
               </Text>
@@ -69,7 +69,7 @@ export default (): JSX.Element => {
                 onSelect={setSize}
               />
             </Container>
-            <Container align="center" gap={0}>
+            <Container row justify="space-between" gap={0}>
               <Text variant="small" bold>
                 Thickness
               </Text>
@@ -79,19 +79,19 @@ export default (): JSX.Element => {
                 onSelect={setThickness}
               />
             </Container>
-            <Spacer size="small" />
-            <Container align="center" gap={0}>
+            <Container row justify="space-between" gap={0}>
               <Text variant="small" bold>
                 Disabled
               </Text>
               <Toggle onChange={(): void => setDisabled(!disabled)} />
             </Container>
           </Container>
-          <Spacer size="large" />
           <Spacer size="small" />
-          <Container align="center">
+          <Container gap={0} align="flex-start">
+            <Text variant="h3">Result</Text>
             <Link href="/storybook/button">
               <Button
+                gap={0}
                 variant={variant}
                 size={size}
                 thickness={thickness}
