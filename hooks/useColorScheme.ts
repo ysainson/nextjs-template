@@ -17,7 +17,7 @@ const getPrefersColorScheme = (defaultScheme: Scheme): PrefersColorScheme => {
 
   if (supportMatchMedia) {
     ['dark', 'light'].forEach((scheme) => {
-      const mq = matchMedia(`(prefers-color-scheme: ${scheme}`);
+      const mq = matchMedia(`(prefers-color-scheme: ${scheme})`);
 
       if (mq.matches) {
         prefersColorScheme.query = mq;
@@ -44,21 +44,53 @@ export default (defaultScheme = 'light' as Scheme): Scheme => {
       evt: MediaQueryListEventMap['change']
     ): void {
       if (!evt.matches) {
-        this.removeEventListener('change', schemeChangeHandler);
+        if (this?.removeEventListener) {
+          this?.removeEventListener('change', schemeChangeHandler);
+        } else {
+          /**
+           * https://github.com/microsoft/TypeScript/issues/32210
+           * https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList#Browser_compatibility
+           */
+          this?.removeListener(schemeChangeHandler);
+        }
         const obj = getPrefersColorScheme(prefersColorScheme.current.scheme);
 
         if (isMounted.current) {
           setScheme(obj.scheme);
         }
-        obj.query.addEventListener('change', schemeChangeHandler);
+        if (obj.query.addEventListener) {
+          obj.query.addEventListener('change', schemeChangeHandler);
+        } else {
+          /**
+           * https://github.com/microsoft/TypeScript/issues/32210
+           * https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList#Browser_compatibility
+           */
+          obj.query.addListener(schemeChangeHandler);
+        }
       }
     }
 
-    query.addEventListener('change', schemeChangeHandler);
+    if (query.addEventListener) {
+      query.addEventListener('change', schemeChangeHandler);
+    } else {
+      /**
+       * https://github.com/microsoft/TypeScript/issues/32210
+       * https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList#Browser_compatibility
+       */
+      query.addListener(schemeChangeHandler);
+    }
     isMounted.current = true;
 
     return (): void => {
-      query.removeEventListener('change', schemeChangeHandler);
+      if (query.removeEventListener) {
+        query.removeEventListener('change', schemeChangeHandler);
+      } else {
+        /**
+         * https://github.com/microsoft/TypeScript/issues/32210
+         * https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList#Browser_compatibility
+         */
+        query.removeListener(schemeChangeHandler);
+      }
       isMounted.current = false;
     };
   }, []);

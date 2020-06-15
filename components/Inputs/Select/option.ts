@@ -49,6 +49,7 @@ export const StyledSelectOption = styled.div<StyledSelectOptionProps>`
   // Text
   color: ${color.text};
   font-size: ${theme.typography.small.size};
+  font-family: Montserrat, sans-serif;
 
   // Layout
   padding: calc(${theme.layout.gap} * 2);

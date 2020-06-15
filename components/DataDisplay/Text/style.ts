@@ -32,6 +32,7 @@ export const StyledText = styled.text<StyledTextProps>`
   font-size: ${({ size }): string => size};
   font-weight: ${({ weight }): FontWeight => weight};
   font-style: ${({ italic }): string => (italic ? 'italic' : 'normal')};
+  font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 `;
