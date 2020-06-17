@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 import { Text } from '@components/DataDisplay';
 import { Container } from '@components/Layouts';
@@ -6,7 +6,7 @@ import { Container } from '@components/Layouts';
 import { StyledButton, StyledButtonProps, ButtonVariant } from './style';
 
 interface ButtonProps extends Partial<Omit<StyledButtonProps, 'variant'>> {
-  children: ReactNode;
+  children: string;
   variant?: ButtonVariant;
   disabled?: boolean;
   gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
