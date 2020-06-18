@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { uuid } from '@utils';
 
-import { Container, Spacer } from '@components/Layouts';
 import { Select } from '@components/Inputs';
-import { InlineCode, Link, Text } from '@components/DataDisplay';
+import { DataElement, Documentation } from '@components/Storybook';
 
 type Size = 'short' | 'medium' | 'long';
 type Thickness = 'small' | 'medium' | 'large';
@@ -15,7 +14,11 @@ export default (): JSX.Element => {
     { prop: 'onSelect', types: ['(value: T) => void'] },
     { prop: 'selected', types: ['Option<T>'] },
     { prop: 'text', types: ['string'], optional: true },
-    { prop: 'size', types: ['"short"', '"medium"', '"long"'], optional: true },
+    {
+      prop: 'size',
+      types: ['"short"', '"medium"', '"long"'],
+      optional: true,
+    },
     {
       prop: 'thickness',
       types: ['"small"', '"medium"', '"large"'],
@@ -32,53 +35,27 @@ export default (): JSX.Element => {
     { value: 'Three', label: 'Element 3' },
   ];
 
+  const getSelect = (type: string, e: DataElement): ReactNode => {
+    const t = type.replace(new RegExp('"', 'g'), '');
+    return (
+      <Select
+        key={uuid()}
+        options={options}
+        onSelect={(): void => {}}
+        size={e.prop === 'size' ? (t as Size) : undefined}
+        thickness={e.prop === 'thickness' ? (t as Thickness) : undefined}
+        disabled={e.prop === 'disabled'}
+      />
+    );
+  };
+
   return (
-    <Container align="center">
-      <Container>
-        <Container>
-          <Text variant="h1">Select</Text>
-          <Text variant="h5">
-            Display a dropdown list of items.&nbsp;
-            <Link href="/storybook/select/play">Try it yourself!</Link>
-          </Text>
-        </Container>
-        {data.map((e) => (
-          <React.Fragment key={uuid()}>
-            <Container row justify="space-between">
-              {e.optional ? (
-                <Container gap={0} row justify="flex-start">
-                  <Text variant="h4">{e.prop}</Text>
-                  <Text variant="small">&nbsp;(Optional)</Text>
-                </Container>
-              ) : (
-                <Text variant="h4">{e.prop}</Text>
-              )}
-              <Spacer size="large" />
-              <InlineCode>{e.types.join(' | ')}</InlineCode>
-            </Container>
-            {e.types.length > 1 && (
-              <Container gap={0} row justify="flex-start">
-                {e.types.map((type) => {
-                  const t = type.replace(new RegExp('"', 'g'), '');
-                  return (
-                    <Select
-                      key={uuid()}
-                      options={options}
-                      onSelect={(): void => {}}
-                      size={e.prop === 'size' ? (t as Size) : undefined}
-                      thickness={
-                        e.prop === 'thickness' ? (t as Thickness) : undefined
-                      }
-                      disabled={e.prop === 'disabled'}
-                    />
-                  );
-                })}
-              </Container>
-            )}
-            {e.types.length > 1 && <Spacer size="small" />}
-          </React.Fragment>
-        ))}
-      </Container>
-    </Container>
+    <Documentation
+      title="Select"
+      description="Display a dropdown list of items."
+      playgroundLink="/storybook/select/play"
+      data={data}
+      getComponent={getSelect}
+    />
   );
 };
