@@ -21,7 +21,7 @@ export default ({ onChange, toggled = false }: ToggleProps): JSX.Element => {
   }, [isToggled, onChange]);
 
   return (
-    <Container>
+    <Container flex={0}>
       <StyledToggleWrapper onClick={handleClick}>
         <StyledToggle toggled={isToggled}>
           <StyledToggleContent toggled={isToggled} />

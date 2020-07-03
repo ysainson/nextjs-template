@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ChevronDown, ChevronUp } from 'react-feather';
 
 import { uuid } from '@utils';
@@ -33,8 +33,8 @@ export default <T,>({
   options,
   onSelect,
   selected,
+  size,
   text = 'Select...',
-  size = 'medium',
   thickness = 'medium',
   disabled = false,
   error = false,
@@ -44,7 +44,7 @@ export default <T,>({
   const [selectedOption, setSelectedOption] = useState(selected);
   const ref = useClickOutside<HTMLDivElement>(() => setOpen(false));
 
-  const variant = useMemo(() => {
+  const getVariant = useCallback(() => {
     if (disabled) return 'disabled';
     if (error) return 'error';
     return 'default';
@@ -60,12 +60,12 @@ export default <T,>({
   );
 
   return (
-    <Container gap={gap}>
-      <StyledSelectContainer ref={ref} size={size}>
+    <Container gap={gap} flex={size ? 0 : 1}>
+      <StyledSelectContainer ref={ref} size={size ?? 'medium'}>
         <StyledSelect
           open={open}
           thickness={thickness}
-          variant={variant}
+          variant={getVariant()}
           onClick={(): void => setOpen(!open)}
         >
           <Container row justify="space-between" gap={0}>

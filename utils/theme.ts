@@ -6,6 +6,8 @@ const colors = {
   '--error-light': { light: 'rgba(255,0,0,0.68)', dark: 'rgba(255,0,0,0.68)' },
   '--error': { light: 'rgba(255,0,0,1)', dark: 'rgba(255,0,0,1)' },
   '--toggle-bg': { light: '#eaeaea', dark: '#333333' },
+  '--pink': { light: '#f81ce5', dark: '#f81ce5' },
+  '--transparent': { light: 'transparent', dark: 'transparent' },
 };
 
 export default {

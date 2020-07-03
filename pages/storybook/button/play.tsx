@@ -49,10 +49,12 @@ export default (): JSX.Element => {
           </Container>
           <Container gap={0} align="stretch">
             <Text variant="h3">Props</Text>
-            <Container row justify="space-between" gap={0}>
-              <Text variant="small" bold>
-                Variant
-              </Text>
+            <Container row gap={0}>
+              <Container gap={0}>
+                <Text variant="small" bold>
+                  variant
+                </Text>
+              </Container>
               <Select
                 text={variantOptions[0].label}
                 options={variantOptions}
@@ -60,9 +62,11 @@ export default (): JSX.Element => {
               />
             </Container>
             <Container row justify="space-between" gap={0}>
-              <Text variant="small" bold>
-                Size
-              </Text>
+              <Container gap={0}>
+                <Text variant="small" bold>
+                  size
+                </Text>
+              </Container>
               <Select
                 text={sizeOptions[1].label}
                 options={sizeOptions}
@@ -70,9 +74,11 @@ export default (): JSX.Element => {
               />
             </Container>
             <Container row justify="space-between" gap={0}>
-              <Text variant="small" bold>
-                Thickness
-              </Text>
+              <Container gap={0}>
+                <Text variant="small" bold>
+                  thickness
+                </Text>
+              </Container>
               <Select
                 text={thicknessOptions[1].label}
                 options={thicknessOptions}
@@ -80,10 +86,14 @@ export default (): JSX.Element => {
               />
             </Container>
             <Container row justify="space-between" gap={0}>
-              <Text variant="small" bold>
-                Disabled
-              </Text>
-              <Toggle onChange={(): void => setDisabled(!disabled)} />
+              <Container gap={0}>
+                <Text variant="small" bold>
+                  disabled
+                </Text>
+              </Container>
+              <Container align="flex-end" gap={0}>
+                <Toggle onChange={(): void => setDisabled(!disabled)} />
+              </Container>
             </Container>
           </Container>
           <Spacer size="small" />

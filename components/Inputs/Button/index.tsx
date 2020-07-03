@@ -15,18 +15,18 @@ interface ButtonProps extends Partial<Omit<StyledButtonProps, 'variant'>> {
 
 export default ({
   children,
+  size,
   variant = 'primary',
-  size = 'medium',
   thickness = 'medium',
   disabled = false,
   gap = 3,
   onClick = (): void => {},
 }: ButtonProps): JSX.Element => {
   return (
-    <Container gap={gap}>
+    <Container gap={gap} flex={size ? 0 : 1}>
       <StyledButton
         variant={disabled ? 'disabled' : variant}
-        size={size}
+        size={size ?? 'medium'}
         thickness={thickness}
         onClick={(!disabled && onClick) || ((): void => {})}
       >

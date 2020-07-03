@@ -1,2 +1,5 @@
 /next-env.d.ts
 /pages/_document.tsx
+/node_modules
+/.next
+/.idea

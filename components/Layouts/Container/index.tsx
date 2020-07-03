@@ -8,14 +8,16 @@ interface ContainerProps extends Partial<StyledContainerProps> {
 
 export default ({
   children,
+  flex = 1,
   row = false,
   noWrap = false,
-  justify = 'center',
+  justify = 'flex-start',
   align = row ? 'center' : 'stretch',
   gap = 3,
 }: ContainerProps): JSX.Element => {
   return (
     <StyledContainer
+      flex={flex}
       row={row}
       noWrap={noWrap}
       justify={justify}

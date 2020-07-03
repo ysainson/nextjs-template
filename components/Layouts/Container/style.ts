@@ -12,6 +12,7 @@ type flexContent =
   | 'center';
 
 export interface StyledContainerProps {
+  flex: number;
   row: boolean;
   noWrap: boolean;
   justify: flexContent;
@@ -22,6 +23,7 @@ export interface StyledContainerProps {
 export const StyledContainer = styled.div<StyledContainerProps>`
   // Layout
   display: flex;
+  flex: ${({ flex }): number => flex};
   flex-direction: ${({ row }): string => (row ? 'row' : 'column')};
   flex-wrap: ${({ noWrap }): string => (noWrap ? 'nowrap' : 'wrap')};
   justify-content: ${({ justify }): string => justify};
