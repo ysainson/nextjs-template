@@ -10,6 +10,7 @@ export default ({
   children,
   flex = 1,
   row = false,
+  reverse = false,
   noWrap = false,
   justify = 'flex-start',
   align = row ? 'center' : 'stretch',
@@ -19,6 +20,7 @@ export default ({
     <StyledContainer
       flex={flex}
       row={row}
+      reverse={reverse}
       noWrap={noWrap}
       justify={justify}
       align={align}

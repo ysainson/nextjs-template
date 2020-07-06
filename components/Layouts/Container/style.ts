@@ -14,6 +14,7 @@ type flexContent =
 export interface StyledContainerProps {
   flex: number;
   row: boolean;
+  reverse: boolean;
   noWrap: boolean;
   justify: flexContent;
   align: flexContent;
@@ -24,7 +25,8 @@ export const StyledContainer = styled.div<StyledContainerProps>`
   // Layout
   display: flex;
   flex: ${({ flex }): number => flex};
-  flex-direction: ${({ row }): string => (row ? 'row' : 'column')};
+  flex-direction: ${({ row, reverse }): string =>
+    `${row ? 'row' : 'column'}${reverse ? '-reverse' : ''}`};
   flex-wrap: ${({ noWrap }): string => (noWrap ? 'nowrap' : 'wrap')};
   justify-content: ${({ justify }): string => justify};
   align-items: ${({ align }): string => align};

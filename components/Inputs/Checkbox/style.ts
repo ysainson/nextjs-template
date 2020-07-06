@@ -24,6 +24,21 @@ export interface StyledCheckboxProps {
   strokeWidth: number;
 }
 
+export const StyledCheckboxContainer = styled.div`
+  display: flex;
+  flex-direction: inherit;
+  align-items: inherit;
+  small {
+    transition: all 0.2s ease 0s !important;
+  }
+`;
+
+export const StyledCheckboxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  min-height: 18px;
+`;
+
 export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   // Style
   background-color: ${({ disabled, variant }): ThemeSet | VariantSet =>

@@ -13,7 +13,7 @@ interface TextProps extends Partial<Omit<StyledTextProps, 'size'>> {
 export default ({
   children,
   variant,
-  fill = 'light',
+  fill = theme.colors['--default-inverted'],
   weight = theme.typography[variant].weight as FontWeight,
   italic = false,
   bold = false,

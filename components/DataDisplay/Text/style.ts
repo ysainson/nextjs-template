@@ -1,12 +1,5 @@
 import styled from 'styled-components';
-import styledTheme from 'styled-theming';
-
-import { theme } from '@utils';
-
-const color = styledTheme.variants('mode', 'fill', {
-  light: theme.colors['--default-inverted'],
-  dark: theme.colors['--default'],
-});
+import styledTheme, { ThemeMap, ThemeSet } from 'styled-theming';
 
 export type FontWeight =
   | 900
@@ -21,14 +14,15 @@ export type FontWeight =
 
 export interface StyledTextProps {
   size: string;
-  fill: 'light' | 'dark';
+  fill: ThemeMap;
   weight: FontWeight;
   italic: boolean;
   bold: boolean;
 }
 
 export const StyledText = styled.text<StyledTextProps>`
-  color: ${color};
+  // Style
+  color: ${({ fill }): ThemeSet => styledTheme('mode', fill)};
   font-size: ${({ size }): string => size};
   font-weight: ${({ weight }): FontWeight => weight};
   font-style: ${({ italic }): string => (italic ? 'italic' : 'normal')};
