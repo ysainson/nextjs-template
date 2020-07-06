@@ -45,7 +45,6 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
     disabled && variant === 'checked'
       ? styledTheme('mode', theme.colors['--grey-inverted'])
       : color.background};
-  border: 1px solid grey;
   cursor: ${({ disabled }): string => (disabled ? 'not-allowed' : 'pointer')};
   border: 1px solid
     ${({ disabled }): ThemeSet | VariantSet =>
