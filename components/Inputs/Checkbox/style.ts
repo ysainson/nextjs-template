@@ -55,6 +55,8 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
 
   // Image
   svg {
+    display: block;
+    margin: auto;
     color: ${color.icon};
     transform: scale(0.6);
     height: 100%;
