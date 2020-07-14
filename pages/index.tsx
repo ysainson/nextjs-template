@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Container } from '@components/Layouts';
 import { InlineCode, Link, Text } from '@components/DataDisplay';
+import { Slider } from '@components/Inputs';
 
 export default (): JSX.Element => {
   return (
@@ -32,6 +33,7 @@ export default (): JSX.Element => {
           </Text>
         </Link>
       </Container>
+      <Slider />
     </Container>
   );
 };
