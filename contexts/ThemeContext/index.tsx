@@ -32,6 +32,14 @@ export default ({ children }: { children: ReactNode }): JSX.Element => {
   const mounted = useMounted();
 
   useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark-theme');
+    } else {
+      document.documentElement.classList.remove('dark-theme');
+    }
+  }, [theme]);
+
+  useEffect(() => {
     if (mounted) {
       setTheme(prefersColorScheme);
     }

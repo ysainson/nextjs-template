@@ -2,7 +2,6 @@ import React from 'react';
 import { Moon, Sun } from 'react-feather';
 import { AppProps } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import styledTheme from 'styled-theming';
 
 import { useMounted } from '@hooks';
 import { theme } from '@utils';
@@ -14,19 +13,28 @@ import { Container } from '@components/Layouts';
 
 import 'fonts.styles.css';
 
-const backgroundColor = styledTheme('mode', theme.colors['--default']);
-
 const GlobalStyle = createGlobalStyle`
+  :root {
+    color-scheme: dark light;
+    --background: #fff;
+    --typography-primary: #000;
+  }
+
+  .dark-theme {
+    --background: #000;
+    --typography-primary: #fff;
+  }
+
   html, body {
-    background: ${backgroundColor};
+    background: var(--background);
     margin: 0;
     padding: 0;
   }
 `;
 
 const AppContent = ({ Component, pageProps }: AppProps): JSX.Element => {
-  const [scheme, toggle] = useTheme();
   const mounted = useMounted();
+  const [scheme, toggle] = useTheme();
 
   if (!mounted) {
     return <></>;

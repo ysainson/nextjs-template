@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container } from '@components/Layouts';
 
@@ -19,6 +19,10 @@ export default ({ onChange, toggled = false }: ToggleProps): JSX.Element => {
     setToggled(!isToggled);
     onChange();
   }, [isToggled, onChange]);
+
+  useEffect(() => {
+    setToggled(toggled);
+  }, [toggled]);
 
   return (
     <Container flex={0}>

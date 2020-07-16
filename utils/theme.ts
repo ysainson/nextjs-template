@@ -1,3 +1,9 @@
+const vars = {
+  typographyPrimary: '--typography-primary',
+};
+
+const cvar = (key: keyof typeof vars): string => `var(${vars[key]})`;
+
 const colors = {
   '--default': { light: '#fff', dark: '#000' },
   '--default-inverted': { light: '#000', dark: '#fff' },
@@ -12,6 +18,7 @@ const colors = {
 
 export default {
   colors,
+  cvar,
   typography: {
     h1: { size: '3em', weight: 'bold' },
     h2: { size: '2.25em', weight: 600 },
