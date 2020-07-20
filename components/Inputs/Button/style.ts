@@ -1,42 +1,41 @@
 import styled from 'styled-components';
-import { variants } from 'styled-theming';
 
 import { theme } from '@utils';
 
 const color = {
   base: {
-    text: variants('mode', 'variant', {
-      primary: theme.colors['--default'],
-      secondary: theme.colors['--grey'],
-      disabled: theme.colors['--grey-inverted'],
-    }),
-    background: variants('mode', 'variant', {
-      primary: theme.colors['--default-inverted'],
-      secondary: theme.colors['--default'],
-      disabled: theme.colors['--default'],
-    }),
-    border: variants('mode', 'variant', {
-      primary: theme.colors['--default'],
-      secondary: theme.colors['--grey-inverted'],
-      disabled: theme.colors['--grey-inverted'],
-    }),
+    text: {
+      primary: theme.cvar('colorButtonTextPrimary'),
+      secondary: theme.cvar('colorButtonTextSecondary'),
+      disabled: theme.cvar('colorButtonTextDisabled'),
+    },
+    background: {
+      primary: theme.cvar('colorButtonBgPrimary'),
+      secondary: theme.cvar('colorButtonBgSecondary'),
+      disabled: theme.cvar('colorButtonBgDisabled'),
+    },
+    border: {
+      primary: theme.cvar('colorButtonBorderPrimary'),
+      secondary: theme.cvar('colorButtonBorderSecondary'),
+      disabled: theme.cvar('colorButtonBorderDisabled'),
+    },
   },
   hover: {
-    text: variants('mode', 'variant', {
-      primary: theme.colors['--default-inverted'],
-      secondary: theme.colors['--default-inverted'],
-      disabled: theme.colors['--grey-inverted'],
-    }),
-    background: variants('mode', 'variant', {
-      primary: theme.colors['--default'],
-      secondary: theme.colors['--default'],
-      disabled: theme.colors['--default'],
-    }),
-    border: variants('mode', 'variant', {
-      primary: theme.colors['--default-inverted'],
-      secondary: theme.colors['--default-inverted'],
-      disabled: theme.colors['--grey-inverted'],
-    }),
+    text: {
+      primary: theme.cvar('colorButtonTextSecondary'),
+      secondary: theme.cvar('colorButtonTextSecondary'),
+      disabled: theme.cvar('colorButtonTextDisabled'),
+    },
+    background: {
+      primary: theme.cvar('colorButtonBgSecondary'),
+      secondary: theme.cvar('colorButtonBgSecondary'),
+      disabled: theme.cvar('colorButtonBgDisabled'),
+    },
+    border: {
+      primary: theme.cvar('colorButtonBorderPrimary'),
+      secondary: theme.cvar('colorButtonBorderPrimary'),
+      disabled: theme.cvar('colorButtonBorderDisabled'),
+    },
   },
 };
 
@@ -52,9 +51,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
   // Style
   cursor: ${({ variant }): string =>
     variant === 'disabled' ? 'not-allowed' : 'pointer'};
-  background: ${color.base.background};
-  border-radius: ${theme.layout.radius};
-  border: 1px solid ${color.base.border};
+  background: ${({ variant }): string => color.base.background[variant]};
+  border-radius: ${theme.cvar('layoutRadius')};
+  border: 1px solid ${({ variant }): string => color.base.border[variant]};
   outline: none;
 
   // Text
@@ -62,7 +61,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   font-size: inherit;
   white-space: nowrap;
   small {
-    color: ${color.base.text};
+    color: ${({ variant }): string => color.base.text[variant]};
   }
 
   // Layout
@@ -80,12 +79,12 @@ export const StyledButton = styled.button<StyledButtonProps>`
   padding: ${({ thickness }): string => {
     switch (thickness) {
       case 'large':
-        return `calc(${theme.layout.gap} * 3)`;
+        return `${theme.cvar('layoutSpaceGapHalf')}`;
       case 'small':
-        return `calc(${theme.layout.gap} * 1)`;
+        return `${theme.cvar('layoutSpace')}`;
       case 'medium':
       default:
-        return `calc(${theme.layout.gap} * 2)`;
+        return `${theme.cvar('layoutSpace2x')}`;
     }
   }};
 
@@ -95,9 +94,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
   // Interaction
   :hover {
     small {
-      color: ${color.hover.text};
+      color: ${({ variant }): string => color.hover.text[variant]};
     }
-    border: 1px solid ${color.hover.border};
-    background: ${color.hover.background};
+    border: 1px solid ${({ variant }): string => color.hover.border[variant]};
+    background: ${({ variant }): string => color.hover.background[variant]};
   }
 `;
