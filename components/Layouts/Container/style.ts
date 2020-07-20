@@ -30,5 +30,5 @@ export const StyledContainer = styled.div<StyledContainerProps>`
   flex-wrap: ${({ noWrap }): string => (noWrap ? 'nowrap' : 'wrap')};
   justify-content: ${({ justify }): string => justify};
   align-items: ${({ align }): string => align};
-  margin: calc(${theme.layout.gap} * ${({ gap }): number => gap});
+  margin: calc(${theme.cvar('layoutSpace')} * ${({ gap }): number => gap});
 `;

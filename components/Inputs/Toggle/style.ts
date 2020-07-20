@@ -1,12 +1,6 @@
 import styled from 'styled-components';
-import styledTheme, { VariantSet } from 'styled-theming';
 
 import { theme } from '@utils';
-
-const color = {
-  background: styledTheme('mode', theme.colors['--toggle-bg']),
-  switch: styledTheme('mode', theme.colors['--default']),
-};
 
 export interface StyledToggleProps {
   toggled: boolean;
@@ -33,8 +27,8 @@ export const StyledToggle = styled.span<StyledToggleProps>`
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   width: 28px;
   border-radius: 14px;
-  background: ${({ toggled }): string | VariantSet =>
-    toggled ? '#f81ce5' : color.background};
+  background: ${({ toggled }): string =>
+    toggled ? theme.cvar('colorToggleBgOn') : theme.cvar('colorToggleBgOff')};
 `;
 
 export const StyledToggleContent = styled.div<StyledToggleProps>`
@@ -47,5 +41,5 @@ export const StyledToggleContent = styled.div<StyledToggleProps>`
   transition: left 0.28s cubic-bezier(0, 0, 0.2, 1);
   width: 12px;
   border-radius: 14px;
-  background: ${color.switch};
+  background: ${theme.cvar('colorBackground')};
 `;

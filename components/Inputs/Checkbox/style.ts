@@ -1,21 +1,20 @@
 import styled from 'styled-components';
-import styledTheme, { ThemeSet, variants, VariantSet } from 'styled-theming';
 
 import { theme } from '@utils';
 
 const color = {
-  icon: variants('mode', 'variant', {
-    checked: theme.colors['--default'],
-    unchecked: theme.colors['--transparent'],
-  }),
-  background: variants('mode', 'variant', {
-    checked: theme.colors['--pink'],
-    unchecked: theme.colors['--transparent'],
-  }),
-  border: variants('mode', 'variant', {
-    checked: theme.colors['--pink'],
-    unchecked: theme.colors['--grey'],
-  }),
+  icon: {
+    unchecked: theme.cvar('colorCheckboxIconUnchecked'),
+    checked: theme.cvar('colorCheckboxIconChecked'),
+  },
+  background: {
+    unchecked: theme.cvar('colorCheckboxBgUnchecked'),
+    checked: theme.cvar('colorCheckboxBgChecked'),
+  },
+  border: {
+    unchecked: theme.cvar('colorCheckboxBorderUnchecked'),
+    checked: theme.cvar('colorCheckboxBorderChecked'),
+  },
 };
 
 export interface StyledCheckboxProps {
@@ -41,23 +40,21 @@ export const StyledCheckboxWrapper = styled.div`
 
 export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   // Style
-  background-color: ${({ disabled, variant }): ThemeSet | VariantSet =>
+  background-color: ${({ disabled, variant }): string =>
     disabled && variant === 'checked'
-      ? styledTheme('mode', theme.colors['--grey-inverted'])
-      : color.background};
+      ? theme.cvar('colorCheckboxDisabled')
+      : color.background[variant]};
   cursor: ${({ disabled }): string => (disabled ? 'not-allowed' : 'pointer')};
   border: 1px solid
-    ${({ disabled }): ThemeSet | VariantSet =>
-      disabled
-        ? styledTheme('mode', theme.colors['--grey-inverted'])
-        : color.border};
-  border-radius: ${theme.layout.radius};
+    ${({ variant, disabled }): string =>
+      disabled ? theme.cvar('colorCheckboxDisabled') : color.border[variant]};
+  border-radius: ${theme.cvar('layoutRadius')};
 
   // Image
   svg {
     display: block;
     margin: auto;
-    color: ${color.icon};
+    color: ${({ variant }): string => color.icon[variant]};
     transform: scale(0.6);
     height: 100%;
     width: 100%;

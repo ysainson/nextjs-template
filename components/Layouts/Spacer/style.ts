@@ -8,16 +8,16 @@ export interface StyledSpacerProps {
 export const StyledSpacer = styled.div<StyledSpacerProps>`
   padding: ${({ size }): string => {
     if (typeof size === 'number') {
-      return `calc(${theme.layout.gap} * ${size})`;
+      return `calc(${theme.cvar('layoutSpace')} * ${size})`;
     }
     switch (size) {
       case 'small':
-        return `calc(${theme.layout.gap} * 4)`;
+        return `${theme.cvar('layoutSpace4x')}`;
       case 'large':
-        return `calc(${theme.layout.gap} * 8)`;
+        return `${theme.cvar('layoutSpace8x')}`;
       case 'medium':
       default:
-        return `calc(${theme.layout.gap} * 6)`;
+        return `${theme.cvar('layoutSpaceGap')}`;
     }
   }};
 `;

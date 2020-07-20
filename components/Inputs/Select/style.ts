@@ -1,26 +1,25 @@
 import styled from 'styled-components';
-import { variants, VariantSet } from 'styled-theming';
 
 import { theme } from '@utils';
 
 const color = {
   base: {
-    primary: variants('mode', 'variant', {
-      default: theme.colors['--grey'],
-      error: theme.colors['--error'],
-      disabled: theme.colors['--grey-inverted'],
-    }),
-    secondary: variants('mode', 'variant', {
-      default: theme.colors['--grey-inverted'],
-      error: theme.colors['--error-light'],
-      disabled: theme.colors['--grey-inverted'],
-    }),
+    text: {
+      default: theme.cvar('colorSelectTextDefault'),
+      error: theme.cvar('colorSelectTextError'),
+      disabled: theme.cvar('colorSelectTextDisabled'),
+    },
+    border: {
+      default: theme.cvar('colorSelectBorderDefault'),
+      error: theme.cvar('colorSelectBorderError'),
+      disabled: theme.cvar('colorSelectBorderDisabled'),
+    },
   },
-  hover: variants('mode', 'variant', {
-    default: theme.colors['--default-inverted'],
-    error: theme.colors['--error'],
-    disabled: theme.colors['--grey-inverted'],
-  }),
+  hover: {
+    default: theme.cvar('colorSelectDefaultHover'),
+    error: theme.cvar('colorSelectErrorHover'),
+    disabled: theme.cvar('colorSelectDisabledHover'),
+  },
 };
 
 export interface StyledSelectContainerProps {
@@ -54,35 +53,36 @@ export const StyledSelect = styled.div<StyledSelectProps>`
   cursor: ${({ variant }): string =>
     variant === 'disabled' ? 'not-allowed' : 'pointer'};
   border: 1px solid
-    ${({ open }): VariantSet => (open ? color.hover : color.base.secondary)};
-  border-radius: ${theme.layout.radius};
+    ${({ variant, open }): string =>
+      open ? color.hover[variant] : color.base.border[variant]};
+  border-radius: ${theme.cvar('layoutRadius')};
 
   // Image
   svg {
-    color: ${({ open }): VariantSet =>
-      open ? color.hover : color.base.primary};
+    color: ${({ variant, open }): string =>
+      open ? color.hover[variant] : color.base.text[variant]};
   }
 
   // Text
   white-space: nowrap;
   small {
-    color: ${({ open }): VariantSet =>
-      open ? color.hover : color.base.primary};
+    color: ${({ variant, open }): string =>
+      open ? color.hover[variant] : color.base.text[variant]};
   }
 
   // Layout
   div {
-    margin: 0 calc(${theme.layout.gap} * 2);
+    margin: 0 ${theme.cvar('layoutSpace2x')};
   }
   padding: ${({ thickness }): string => {
     switch (thickness) {
       case 'large':
-        return `calc(${theme.layout.gap} * 3) 0`;
+        return `${theme.cvar('layoutSpaceGapHalf')} 0`;
       case 'small':
-        return `calc(${theme.layout.gap} * 1) 0`;
+        return `${theme.cvar('layoutSpace')} 0`;
       case 'medium':
       default:
-        return `calc(${theme.layout.gap} * 2) 0`;
+        return `${theme.cvar('layoutSpace2x')} 0`;
     }
   }};
 
@@ -92,11 +92,11 @@ export const StyledSelect = styled.div<StyledSelectProps>`
   // Interaction
   :hover {
     svg {
-      color: ${color.hover};
+      color: ${({ variant }): string => color.hover[variant]};
     }
     small {
-      color: ${color.hover};
+      color: ${({ variant }): string => color.hover[variant]};
     }
-    border: 1px solid ${color.hover};
+    border: 1px solid ${({ variant }): string => color.hover[variant]};
   }
 `;

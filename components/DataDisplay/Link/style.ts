@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+import { theme } from '@utils';
+
 const StyledLink = styled.a`
   text-decoration: none;
-  color: #f81ce5;
+  color: ${theme.cvar('colorLink')};
 `;
 
 export default StyledLink;

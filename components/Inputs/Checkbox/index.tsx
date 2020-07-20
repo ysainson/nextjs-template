@@ -53,7 +53,7 @@ export default ({
             <Spacer size={1} />
             <Text
               variant="small"
-              fill={disabled ? theme.colors['--grey-inverted'] : undefined}
+              color={disabled ? theme.cvar('colorCheckboxDisabled') : undefined}
             >
               {label}
             </Text>
