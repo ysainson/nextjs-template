@@ -9,7 +9,7 @@ interface TextProps extends Partial<Omit<StyledTextProps, 'size'>> {
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'small';
 }
 
-export default ({
+const Text = ({
   children,
   variant,
   color = theme.cvar('colorForeground'),
@@ -30,3 +30,5 @@ export default ({
     </StyledText>
   );
 };
+
+export default Text;

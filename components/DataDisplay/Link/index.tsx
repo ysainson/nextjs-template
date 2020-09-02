@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import Link, { LinkProps as NextLinkProps } from 'next/link';
+// eslint-disable-next-line import/no-named-default
+import { default as NextLink, LinkProps as NextLinkProps } from 'next/link';
 
 import StyledLink from './style';
 
@@ -7,7 +8,7 @@ interface LinkProps extends NextLinkProps {
   children: ReactNode;
 }
 
-export default ({
+const Link = ({
   children,
   href,
   replace,
@@ -15,7 +16,7 @@ export default ({
   shallow,
 }: LinkProps): JSX.Element => {
   return (
-    <Link
+    <NextLink
       href={href}
       passHref
       replace={replace}
@@ -23,6 +24,8 @@ export default ({
       shallow={shallow}
     >
       <StyledLink>{children}</StyledLink>
-    </Link>
+    </NextLink>
   );
 };
+
+export default Link;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from '@components/Layouts';
 import { InlineCode, Link, Text } from '@components/DataDisplay';
 
-export default (): JSX.Element => {
+const Home = (): JSX.Element => {
   return (
     <Container align="center">
       <Container>
@@ -35,3 +35,5 @@ export default (): JSX.Element => {
     </Container>
   );
 };
+
+export default Home;

@@ -8,7 +8,7 @@ import { Checkbox, Select, Toggle } from '@components/Inputs';
 
 type LabelLocation = 'right' | 'left' | 'top' | 'bottom';
 
-export default (): JSX.Element => {
+const CheckboxStorybookPlay = (): JSX.Element => {
   const [disabled, setDisabled] = useState(false);
   const [isLabel, setIsLabel] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<JSX.Element>(<Check />);
@@ -105,3 +105,5 @@ export default (): JSX.Element => {
     </>
   );
 };
+
+export default CheckboxStorybookPlay;

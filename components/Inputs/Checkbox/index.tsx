@@ -20,7 +20,7 @@ interface CheckboxProps extends Partial<StyledCheckboxProps> {
   labelLocation?: 'left' | 'right' | 'top' | 'bottom';
 }
 
-export default ({
+const Checkbox = ({
   strokeWidth = 6,
   disabled = false,
   checked = false,
@@ -63,3 +63,5 @@ export default ({
     </Container>
   );
 };
+
+export default Checkbox;

@@ -9,7 +9,7 @@ type Variant = 'primary' | 'secondary';
 type Size = 'short' | 'medium' | 'long';
 type Thickness = 'small' | 'medium' | 'large';
 
-export default (): JSX.Element => {
+const ButtonStorybook = (): JSX.Element => {
   const data = [
     { prop: 'children', types: ['string'] },
     { prop: 'variant', types: ['"primary"', '"secondary"'], optional: true },
@@ -53,3 +53,5 @@ export default (): JSX.Element => {
     />
   );
 };
+
+export default ButtonStorybook;

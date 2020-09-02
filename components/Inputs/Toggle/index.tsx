@@ -12,7 +12,8 @@ import {
 interface ToggleProps extends Partial<StyledToggleProps> {
   onChange: () => void;
 }
-export default ({ onChange, toggled = false }: ToggleProps): JSX.Element => {
+
+const Toggle = ({ onChange, toggled = false }: ToggleProps): JSX.Element => {
   const [isToggled, setToggled] = useState(toggled);
 
   const handleClick = useCallback(() => {
@@ -34,3 +35,5 @@ export default ({ onChange, toggled = false }: ToggleProps): JSX.Element => {
     </Container>
   );
 };
+
+export default Toggle;

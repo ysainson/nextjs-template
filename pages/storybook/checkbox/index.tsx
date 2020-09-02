@@ -5,7 +5,7 @@ import { uuid } from '@utils';
 import { Checkbox } from '@components/Inputs';
 import { DataElement, Documentation } from '@components/Storybook';
 
-export default (): JSX.Element => {
+const CheckboxStorybook = (): JSX.Element => {
   const data = [
     { prop: 'checked', types: ['boolean'], optional: true },
     { prop: 'disabled', types: ['boolean'], optional: true },
@@ -32,3 +32,5 @@ export default (): JSX.Element => {
     />
   );
 };
+
+export default CheckboxStorybook;

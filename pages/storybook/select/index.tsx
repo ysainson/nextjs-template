@@ -8,7 +8,7 @@ import { DataElement, Documentation } from '@components/Storybook';
 type Size = 'short' | 'medium' | 'long';
 type Thickness = 'small' | 'medium' | 'large';
 
-export default (): JSX.Element => {
+const SelectStorybook = (): JSX.Element => {
   const data = [
     { prop: 'options', types: ['Option<T>[]'] },
     { prop: 'onSelect', types: ['(value: T) => void'] },
@@ -59,3 +59,5 @@ export default (): JSX.Element => {
     />
   );
 };
+
+export default SelectStorybook;

@@ -6,7 +6,7 @@ interface ContainerProps extends Partial<StyledContainerProps> {
   children: ReactNode;
 }
 
-export default ({
+const Container = ({
   children,
   flex = 1,
   row = false,
@@ -30,3 +30,5 @@ export default ({
     </StyledContainer>
   );
 };
+
+export default Container;

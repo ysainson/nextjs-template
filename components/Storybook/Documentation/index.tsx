@@ -19,7 +19,7 @@ interface Props {
   getComponent?: (type: string, e: DataElement) => ReactNode;
 }
 
-export default ({
+const Documentation = ({
   title,
   description,
   playgroundLink,
@@ -63,3 +63,5 @@ export default ({
     </Container>
   </Container>
 );
+
+export default Documentation;

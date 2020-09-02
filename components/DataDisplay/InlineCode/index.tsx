@@ -6,7 +6,7 @@ interface InlineCodeProps {
   children: string;
 }
 
-export default ({ children }: InlineCodeProps): JSX.Element => {
+const InlineCode = ({ children }: InlineCodeProps): JSX.Element => {
   return (
     <StyledInlineCode>
       &nbsp;`
@@ -15,3 +15,5 @@ export default ({ children }: InlineCodeProps): JSX.Element => {
     </StyledInlineCode>
   );
 };
+
+export default InlineCode;

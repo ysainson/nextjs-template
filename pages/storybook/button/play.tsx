@@ -9,7 +9,7 @@ type ButtonVariant = 'primary' | 'secondary';
 type ButtonSize = 'short' | 'medium' | 'long';
 type ButtonThickness = 'small' | 'medium' | 'large';
 
-export default (): JSX.Element => {
+const ButtonStorybookPlay = (): JSX.Element => {
   const [variant, setVariant] = useState<ButtonVariant>('primary');
   const [size, setSize] = useState<ButtonSize>('medium');
   const [thickness, setThickness] = useState<ButtonThickness>('medium');
@@ -116,3 +116,5 @@ export default (): JSX.Element => {
     </>
   );
 };
+
+export default ButtonStorybookPlay;

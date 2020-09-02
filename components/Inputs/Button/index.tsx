@@ -13,7 +13,7 @@ interface ButtonProps extends Partial<Omit<StyledButtonProps, 'variant'>> {
   onClick?: () => void;
 }
 
-export default ({
+const Button = ({
   children,
   size,
   variant = 'primary',
@@ -37,3 +37,5 @@ export default ({
     </Container>
   );
 };
+
+export default Button;

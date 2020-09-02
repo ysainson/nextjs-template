@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Documentation } from '@components/Storybook';
 
-export default (): JSX.Element => {
+const ContainerStorybook = (): JSX.Element => {
   const flexContent = [
     '"flex-start"',
     '"flex-end"',
@@ -39,3 +39,5 @@ export default (): JSX.Element => {
     />
   );
 };
+
+export default ContainerStorybook;
