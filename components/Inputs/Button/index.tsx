@@ -30,7 +30,7 @@ export default ({
         thickness={thickness}
         onClick={(!disabled && onClick) || ((): void => {})}
       >
-        <Text variant="small" weight={500} align="center">
+        <Text variant="small" weight={500}>
           {children}
         </Text>
       </StyledButton>

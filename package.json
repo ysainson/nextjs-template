@@ -41,10 +41,10 @@
     "@types/styled-components": "^5.1.0",
     "@types/styled-theming": "^2.2.3",
     "@types/uuid": "^8.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/eslint-plugin": "3.10.1",
     "babel-plugin-styled-components": "^1.10.7",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb-typescript": "^7.2.1",
+    "eslint": "7.8.1",
+    "eslint-config-airbnb-typescript": "^9.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -54,7 +54,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
-    "typescript": "^3.9.5",
+    "typescript": "^4.0.2",
     "typescript-plugin-styled-components": "^1.4.4"
   }
 }

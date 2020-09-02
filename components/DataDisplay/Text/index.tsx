@@ -7,7 +7,6 @@ import { StyledText, StyledTextProps, FontWeight } from './style';
 interface TextProps extends Partial<Omit<StyledTextProps, 'size'>> {
   children: ReactNode;
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'small';
-  align?: 'left' | 'center' | 'right';
 }
 
 export default ({

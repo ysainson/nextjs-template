@@ -19,7 +19,7 @@ interface ColorScheme {
  We want the context to be undefined in case of errors and Typescript forbids
  an undefined createContext
  */
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const ThemeContext: React.Context<ColorScheme> = createContext();
 

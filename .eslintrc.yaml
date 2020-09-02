@@ -1,5 +1,5 @@
 parserOptions:
-  ecmaVersion: 6
+  ecmaVersion: 2020
   project: tsconfig.json
 
 env:
@@ -15,6 +15,8 @@ extends:
 rules:
   prettier/prettier: error
   react/react-in-jsx-scope: off
+  react/require-default-props: off
+  "@typescript-eslint/ban-ts-ignore": off
   no-console: ['error', { allow: ['warn', 'error']}]
   jsx-a11y/anchor-is-valid: [ 'error', {
     "components": [ "Link" ],

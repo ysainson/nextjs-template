@@ -69,7 +69,7 @@ export default <T,>({
           onClick={(): void => setOpen(!open)}
         >
           <Container row justify="space-between" gap={0}>
-            <Text variant="small" weight={500} align="center">
+            <Text variant="small" weight={500}>
               {selectedOption?.label ?? text}
             </Text>
             {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}

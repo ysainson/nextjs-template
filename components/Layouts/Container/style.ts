@@ -1,23 +1,15 @@
 import styled from 'styled-components';
 
 import { theme } from '@utils';
-
-type flexContent =
-  | 'flex-start'
-  | 'flex-end'
-  | 'space-around'
-  | 'space-evenly'
-  | 'space-between'
-  | 'stretch'
-  | 'center';
+import { FlexContent } from '@types';
 
 export interface StyledContainerProps {
   flex: number;
   row: boolean;
   reverse: boolean;
   noWrap: boolean;
-  justify: flexContent;
-  align: flexContent;
+  justify: FlexContent;
+  align: FlexContent;
   gap: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 }
 

@@ -1,4 +1,4 @@
 import Scheme from './Scheme';
+import FlexContent from './FlexContent';
 
-// eslint-disable-next-line import/prefer-default-export
-export type { Scheme };
+export type { Scheme, FlexContent };
