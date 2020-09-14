@@ -35,7 +35,7 @@ const AppContent = ({ Component, pageProps }: AppProps): JSX.Element => {
   );
 };
 
-export default (props: AppProps): JSX.Element => {
+const App = (props: AppProps): JSX.Element => {
   return (
     <ThemeContext>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
@@ -43,3 +43,5 @@ export default (props: AppProps): JSX.Element => {
     </ThemeContext>
   );
 };
+
+export default App;
