@@ -17,11 +17,13 @@ export interface StyledTextProps {
   weight: FontWeight;
   italic: boolean;
   bold: boolean;
+  align: 'left' | 'center' | 'right';
 }
 
 export const StyledText = styled.text<StyledTextProps>`
   // Style
   color: ${({ color }): string => color};
+  text-align: ${({ align }): string => align};
   font-size: ${({ size }): string => size};
   font-weight: ${({ weight }): FontWeight => weight};
   font-style: ${({ italic }): string => (italic ? 'italic' : 'normal')};
