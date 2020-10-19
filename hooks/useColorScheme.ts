@@ -32,7 +32,7 @@ const getPrefersColorScheme = (defaultScheme: Scheme): PrefersColorScheme => {
 export default (defaultScheme = 'light' as Scheme): Scheme => {
   const isMounted = useRef<boolean>(false);
   const prefersColorScheme = useRef<PrefersColorScheme>(
-    getPrefersColorScheme(defaultScheme)
+    getPrefersColorScheme(defaultScheme),
   );
   const [scheme, setScheme] = useState(prefersColorScheme.current.scheme);
 
@@ -41,7 +41,7 @@ export default (defaultScheme = 'light' as Scheme): Scheme => {
 
     function schemeChangeHandler(
       this: MediaQueryList,
-      evt: MediaQueryListEventMap['change']
+      evt: MediaQueryListEventMap['change'],
     ): void {
       if (!evt.matches) {
         if (this?.removeEventListener) {

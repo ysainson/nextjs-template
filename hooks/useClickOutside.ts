@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 
 export default <T extends HTMLElement>(
-  callback: EventListener
+  callback: EventListener,
 ): RefObject<T> => {
   const container = useRef<T>(null);
   const [isTouchEvent, setTouchEvent] = useState(false);

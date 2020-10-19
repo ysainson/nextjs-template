@@ -18,7 +18,7 @@ const CheckboxStorybookPlay = (): JSX.Element => {
     { value: 'right', label: 'Right' },
     { value: 'left', label: 'Left' },
     { value: 'top', label: 'Top' },
-    { value: 'bottom', label: 'Bottom' }
+    { value: 'bottom', label: 'Bottom' },
   );
 
   const iconsList = [

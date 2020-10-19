@@ -27,7 +27,7 @@ export default ({ children }: { children: ReactNode }): JSX.Element => {
   const prefersColorScheme = useColorScheme();
   const [theme, setTheme] = useLocalStorage(
     'prefersColorScheme',
-    prefersColorScheme
+    prefersColorScheme,
   );
   const mounted = useMounted();
 
@@ -51,7 +51,7 @@ export default ({ children }: { children: ReactNode }): JSX.Element => {
       scheme: theme,
       toggle: (): void => setTheme(theme === 'light' ? 'dark' : 'light'),
     }),
-    [setTheme, theme]
+    [setTheme, theme],
   );
 
   return (

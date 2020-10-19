@@ -56,7 +56,7 @@ const Select = <T,>({
       setOpen(false);
       setSelectedOption(e);
     },
-    [onSelect]
+    [onSelect],
   );
 
   return (
