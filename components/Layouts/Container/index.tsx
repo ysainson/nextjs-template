@@ -8,26 +8,19 @@ interface ContainerProps extends Partial<StyledContainerProps> {
 
 const Container = ({
   children,
-  flex = 1,
+  flex = 'auto',
   row = false,
   reverse = false,
   noWrap = false,
   justify = 'flex-start',
   align = row ? 'center' : 'stretch',
+  bg = 'transparent',
   gap = 3,
 }: ContainerProps): JSX.Element => {
   return (
     <StyledContainer
-      flex={flex}
-      row={row}
-      reverse={reverse}
-      noWrap={noWrap}
-      justify={justify}
-      align={align}
-      gap={gap}
-    >
-      {children}
-    </StyledContainer>
+      {...{ flex, row, reverse, noWrap, justify, align, gap, bg, children }}
+    />
   );
 };
 
