@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 
 import { uuid } from '@utils';
 
@@ -28,7 +28,7 @@ const ButtonStorybook = (): JSX.Element => {
     { prop: 'onClick', types: ['() => void'], optional: true },
   ];
 
-  const getButton = (type: string, e: DataElement): ReactNode => {
+  const getButton = (type: string, e: DataElement): React.ReactNode => {
     const t = type.replace(new RegExp('"', 'g'), '');
     return (
       <Button

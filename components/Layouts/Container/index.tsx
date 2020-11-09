@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 
 import { StyledContainer, StyledContainerProps } from './style';
 
 interface ContainerProps extends Partial<StyledContainerProps> {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const Container = ({

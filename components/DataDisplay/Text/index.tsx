@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 
 import { theme } from '@utils';
 
 import { StyledText, StyledTextProps, FontWeight } from './style';
 
 interface TextProps extends Partial<Omit<StyledTextProps, 'size'>> {
-  children: ReactNode;
+  children: React.ReactNode;
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'small';
 }
 

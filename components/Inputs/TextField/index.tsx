@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import * as React from 'react';
 
 import { useClickOutside } from '@hooks';
 
@@ -29,12 +29,12 @@ const TextField = ({
   error = false,
   gap = 3,
 }: TextFieldProps): JSX.Element => {
-  const [focused, setFocused] = useState(false);
-  const [input, setInput] = useState('');
-  const [remainingLength, setRemainingLength] = useState(maxLength);
+  const [focused, setFocused] = React.useState(false);
+  const [input, setInput] = React.useState('');
+  const [remainingLength, setRemainingLength] = React.useState(maxLength);
   const ref = useClickOutside<HTMLDivElement>(() => setFocused(false));
 
-  const getVariant = useCallback(() => {
+  const getVariant = React.useCallback(() => {
     if (disabled) return 'disabled';
     if (error) return 'error';
     return 'default';

@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 // eslint-disable-next-line import/no-named-default
 import { default as NextLink, LinkProps as NextLinkProps } from 'next/link';
 
 import StyledLink from './style';
 
 interface LinkProps extends NextLinkProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const Link = ({

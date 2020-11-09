@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import * as React from 'react';
 import { Check } from 'react-feather';
 
 import { theme } from '@utils';
@@ -15,7 +15,7 @@ import {
 
 interface CheckboxProps extends Partial<StyledCheckboxProps> {
   checked?: boolean;
-  icon?: ReactNode;
+  icon?: React.ReactNode;
   label?: string;
   labelLocation?: 'left' | 'right' | 'top' | 'bottom';
 }
@@ -28,7 +28,7 @@ const Checkbox = ({
   label,
   labelLocation = 'right',
 }: CheckboxProps): JSX.Element => {
-  const [isChecked, setChecked] = useState(checked);
+  const [isChecked, setChecked] = React.useState(checked);
 
   return (
     <Container

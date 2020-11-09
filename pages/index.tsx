@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Container } from '@components/Layouts';
 import { InlineCode, Link, Text } from '@components/DataDisplay';

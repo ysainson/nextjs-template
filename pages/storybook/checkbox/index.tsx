@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 
 import { uuid } from '@utils';
 
@@ -12,7 +12,7 @@ const CheckboxStorybook = (): JSX.Element => {
     { prop: 'icon', types: ['ReactNode'], optional: true },
   ];
 
-  const getCheckbox = (_: string, e: DataElement): ReactNode => {
+  const getCheckbox = (_: string, e: DataElement): React.ReactNode => {
     return (
       <Checkbox
         key={uuid()}

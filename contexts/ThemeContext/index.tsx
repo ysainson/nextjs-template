@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useEffect,
-  useMemo,
-  ReactNode,
-  useContext,
-} from 'react';
+import * as React from 'react';
 
 import { Scheme } from '@types';
 
@@ -21,9 +15,13 @@ interface ColorScheme {
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const ThemeContext: React.Context<ColorScheme> = createContext();
+const Theme: React.Context<ColorScheme> = React.createContext();
 
-export default ({ children }: { children: ReactNode }): JSX.Element => {
+const ThemeContext = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element => {
   const prefersColorScheme = useColorScheme();
   const [theme, setTheme] = useLocalStorage(
     'prefersColorScheme',
@@ -31,7 +29,7 @@ export default ({ children }: { children: ReactNode }): JSX.Element => {
   );
   const mounted = useMounted();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark-theme');
     } else {
@@ -39,14 +37,14 @@ export default ({ children }: { children: ReactNode }): JSX.Element => {
     }
   }, [theme]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (mounted) {
       setTheme(prefersColorScheme);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [prefersColorScheme]);
 
-  const value = useMemo<ColorScheme>(
+  const value = React.useMemo<ColorScheme>(
     () => ({
       scheme: theme,
       toggle: (): void => setTheme(theme === 'light' ? 'dark' : 'light'),
@@ -54,16 +52,16 @@ export default ({ children }: { children: ReactNode }): JSX.Element => {
     [setTheme, theme],
   );
 
-  return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
-  );
+  return <Theme.Provider value={value}>{children}</Theme.Provider>;
 };
 
 export const useTheme = (): [Scheme, () => void] => {
-  const context = useContext<ColorScheme>(ThemeContext);
+  const context = React.useContext<ColorScheme>(Theme);
 
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return [context.scheme, context.toggle];
 };
+
+export default ThemeContext;

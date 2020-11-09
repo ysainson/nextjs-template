@@ -1,10 +1,10 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 
-export default <T extends HTMLElement>(
+const useClickOutside = <T extends HTMLElement>(
   callback: EventListener,
-): RefObject<T> => {
-  const container = useRef<T>(null);
-  const [isTouchEvent, setTouchEvent] = useState(false);
+): React.RefObject<T> => {
+  const container = React.useRef<T>(null);
+  const [isTouchEvent, setTouchEvent] = React.useState(false);
   const eventType = isTouchEvent ? 'touchend' : 'click';
 
   const handleEvent = (e: Event): void => {
@@ -19,7 +19,7 @@ export default <T extends HTMLElement>(
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.addEventListener(eventType, handleEvent, true);
 
     return (): void => {
@@ -27,9 +27,11 @@ export default <T extends HTMLElement>(
     };
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     setTouchEvent('ontouchstart' in document.documentElement);
   }, []);
 
   return container;
 };
+
+export default useClickOutside;

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { Scheme } from '@types';
 
@@ -29,14 +29,14 @@ const getPrefersColorScheme = (defaultScheme: Scheme): PrefersColorScheme => {
   return prefersColorScheme;
 };
 
-export default (defaultScheme = 'light' as Scheme): Scheme => {
-  const isMounted = useRef<boolean>(false);
-  const prefersColorScheme = useRef<PrefersColorScheme>(
+const useColorScheme = (defaultScheme = 'light' as Scheme): Scheme => {
+  const isMounted = React.useRef<boolean>(false);
+  const prefersColorScheme = React.useRef<PrefersColorScheme>(
     getPrefersColorScheme(defaultScheme),
   );
-  const [scheme, setScheme] = useState(prefersColorScheme.current.scheme);
+  const [scheme, setScheme] = React.useState(prefersColorScheme.current.scheme);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const { query } = prefersColorScheme.current;
 
     function schemeChangeHandler(
@@ -97,3 +97,5 @@ export default (defaultScheme = 'light' as Scheme): Scheme => {
 
   return scheme;
 };
+
+export default useColorScheme;

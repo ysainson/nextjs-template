@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Check, X, Plus, Minus } from 'react-feather';
 import Head from 'next/head';
 
@@ -9,10 +9,14 @@ import { Checkbox, Select, Toggle } from '@components/Inputs';
 type LabelLocation = 'right' | 'left' | 'top' | 'bottom';
 
 const CheckboxStorybookPlay = (): JSX.Element => {
-  const [disabled, setDisabled] = useState(false);
-  const [isLabel, setIsLabel] = useState(false);
-  const [selectedIcon, setSelectedIcon] = useState<JSX.Element>(<Check />);
-  const [labelLocation, setLabelLocation] = useState<LabelLocation>('right');
+  const [disabled, setDisabled] = React.useState(false);
+  const [isLabel, setIsLabel] = React.useState(false);
+  const [selectedIcon, setSelectedIcon] = React.useState<JSX.Element>(
+    <Check />,
+  );
+  const [labelLocation, setLabelLocation] = React.useState<LabelLocation>(
+    'right',
+  );
 
   const labelLocations = new Array<{ value: LabelLocation; label: string }>(
     { value: 'right', label: 'Right' },

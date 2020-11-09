@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import * as React from 'react';
 import { ChevronDown, ChevronUp } from 'react-feather';
 
 import { uuid } from '@utils';
@@ -40,17 +40,17 @@ const Select = <T,>({
   error = false,
   gap = 3,
 }: SelectProps<T>): JSX.Element => {
-  const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(selected);
+  const [open, setOpen] = React.useState(false);
+  const [selectedOption, setSelectedOption] = React.useState(selected);
   const ref = useClickOutside<HTMLDivElement>(() => setOpen(false));
 
-  const getVariant = useCallback(() => {
+  const getVariant = React.useCallback(() => {
     if (disabled) return 'disabled';
     if (error) return 'error';
     return 'default';
   }, [disabled, error]);
 
-  const handleSelect = useCallback(
+  const handleSelect = React.useCallback(
     (e: Option<T>): void => {
       onSelect(e.value);
       setOpen(false);

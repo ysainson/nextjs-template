@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 
 import { uuid } from '@utils';
 
@@ -35,7 +35,7 @@ const SelectStorybook = (): JSX.Element => {
     { value: 'Three', label: 'Element 3' },
   ];
 
-  const getSelect = (type: string, e: DataElement): ReactNode => {
+  const getSelect = (type: string, e: DataElement): React.ReactNode => {
     const t = type.replace(new RegExp('"', 'g'), '');
     return (
       <Select

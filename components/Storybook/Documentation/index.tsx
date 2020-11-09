@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 
 import { uuid } from '@utils';
 
@@ -16,7 +16,7 @@ interface Props {
   description: string;
   playgroundLink: string;
   data: Array<DataElement>;
-  getComponent?: (type: string, e: DataElement) => ReactNode;
+  getComponent?: (type: string, e: DataElement) => React.ReactNode;
 }
 
 const Documentation = ({

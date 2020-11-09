@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import * as React from 'react';
 
 import { Container } from '@components/Layouts';
 
@@ -14,14 +14,14 @@ interface ToggleProps extends Partial<StyledToggleProps> {
 }
 
 const Toggle = ({ onChange, toggled = false }: ToggleProps): JSX.Element => {
-  const [isToggled, setToggled] = useState(toggled);
+  const [isToggled, setToggled] = React.useState(toggled);
 
-  const handleClick = useCallback(() => {
+  const handleClick = React.useCallback(() => {
     setToggled(!isToggled);
     onChange();
   }, [isToggled, onChange]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setToggled(toggled);
   }, [toggled]);
 

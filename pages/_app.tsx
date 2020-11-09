@@ -1,4 +1,3 @@
-import React from 'react';
 import { Moon, Sun } from 'react-feather';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';

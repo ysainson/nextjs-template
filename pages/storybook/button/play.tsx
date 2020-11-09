@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import Head from 'next/head';
 
 import { Container, Spacer } from '@components/Layouts';
@@ -10,10 +10,10 @@ type ButtonSize = 'short' | 'medium' | 'long';
 type ButtonThickness = 'small' | 'medium' | 'large';
 
 const ButtonStorybookPlay = (): JSX.Element => {
-  const [variant, setVariant] = useState<ButtonVariant>('primary');
-  const [size, setSize] = useState<ButtonSize>('medium');
-  const [thickness, setThickness] = useState<ButtonThickness>('medium');
-  const [disabled, setDisabled] = useState(false);
+  const [variant, setVariant] = React.useState<ButtonVariant>('primary');
+  const [size, setSize] = React.useState<ButtonSize>('medium');
+  const [thickness, setThickness] = React.useState<ButtonThickness>('medium');
+  const [disabled, setDisabled] = React.useState(false);
 
   const variantOptions = [
     { value: 'primary' as ButtonVariant, label: 'Primary' },
