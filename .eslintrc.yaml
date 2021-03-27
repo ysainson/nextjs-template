@@ -9,7 +9,6 @@ extends:
   - airbnb-typescript
   - airbnb/hooks
   - plugin:@typescript-eslint/recommended
-  - prettier/@typescript-eslint
   - plugin:prettier/recommended
 
 rules:
